@@ -1,0 +1,7 @@
+<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="200" fill="#16a34a"/>
+  <circle cx="100" cy="80" r="25" fill="white" opacity="0.3"/>
+  <circle cx="200" cy="100" r="30" fill="white" opacity="0.2"/>
+  <path d="M75 130 Q150 110 225 130" stroke="white" stroke-width="2" fill="none" opacity="0.5"/>
+  <text x="150" y="160" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">Sustainable Engineering</text>
+</svg>

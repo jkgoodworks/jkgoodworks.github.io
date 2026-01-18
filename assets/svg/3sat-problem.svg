@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="variableGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4f46e5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="clauseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d9488;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="#f8fafc"/>
+  
+  <!-- Title -->
+  <text x="200" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1e293b">3-SAT Problem Visualization</text>
+  
+  <!-- Variables (circles) -->
+  <circle cx="80" cy="80" r="20" fill="url(#variableGrad)" stroke="#312e81" stroke-width="2"/>
+  <text x="80" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">x₁</text>
+  
+  <circle cx="140" cy="80" r="20" fill="url(#variableGrad)" stroke="#312e81" stroke-width="2"/>
+  <text x="140" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">x₂</text>
+  
+  <circle cx="200" cy="80" r="20" fill="url(#variableGrad)" stroke="#312e81" stroke-width="2"/>
+  <text x="200" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">x₃</text>
+  
+  <!-- Dots indicating more variables -->
+  <circle cx="240" cy="80" r="3" fill="#64748b"/>
+  <circle cx="250" cy="80" r="3" fill="#64748b"/>
+  <circle cx="260" cy="80" r="3" fill="#64748b"/>
+  
+  <circle cx="300" cy="80" r="20" fill="url(#variableGrad)" stroke="#312e81" stroke-width="2"/>
+  <text x="300" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">xₙ</text>
+  
+  <!-- Clauses (rectangles) -->
+  <rect x="30" y="150" width="70" height="40" rx="5" fill="url(#clauseGrad)" stroke="#065f46" stroke-width="2"/>
+  <text x="65" y="165" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="white">Clause 1</text>
+  <text x="65" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">(x₁ ∨ ¬x₂ ∨ x₃)</text>
+  
+  <rect x="120" y="150" width="70" height="40" rx="5" fill="url(#clauseGrad)" stroke="#065f46" stroke-width="2"/>
+  <text x="155" y="165" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="white">Clause 2</text>
+  <text x="155" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">(¬x₁ ∨ x₂ ∨ ¬x₃)</text>
+  
+  <!-- Dots indicating more clauses -->
+  <circle cx="210" cy="170" r="3" fill="#64748b"/>
+  <circle cx="220" cy="170" r="3" fill="#64748b"/>
+  <circle cx="230" cy="170" r="3" fill="#64748b"/>
+  
+  <rect x="250" y="150" width="70" height="40" rx="5" fill="url(#clauseGrad)" stroke="#065f46" stroke-width="2"/>
+  <text x="285" y="165" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="white">Clause m</text>
+  <text x="285" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">(x₁ ∨ x₂ ∨ xₙ)</text>
+  
+  <!-- Connection lines -->
+  <!-- x1 to clauses -->
+  <line x1="80" y1="100" x2="65" y2="150" stroke="#64748b" stroke-width="2" opacity="0.7"/>
+  <line x1="80" y1="100" x2="155" y2="150" stroke="#64748b" stroke-width="2" opacity="0.7"/>
+  <line x1="80" y1="100" x2="285" y2="150" stroke="#64748b" stroke-width="2" opacity="0.7"/>
+  
+  <!-- x2 to clauses -->
+  <line x1="140" y1="100" x2="65" y2="150" stroke="#64748b" stroke-width="2" opacity="0.7"/>
+  <line x1="140" y1="100" x2="155" y2="150" stroke="#64748b" stroke-width="2" opacity="0.7"/>
+  <line x1="140" y1="100" x2="285" y2="150" stroke="#64748b" stroke-width="2" opacity="0.7"/>
+  
+  <!-- x3 to clauses -->
+  <line x1="200" y1="100" x2="65" y2="150" stroke="#64748b" stroke-width="2" opacity="0.7"/>
+  <line x1="200" y1="100" x2="155" y2="150" stroke="#64748b" stroke-width="2" opacity="0.7"/>
+  <line x1="200" y1="100" x2="285" y2="150" stroke="#64748b" stroke-width="2" opacity="0.7"/>
+  
+  <!-- xn to clauses -->
+  <line x1="300" y1="100" x2="285" y2="150" stroke="#64748b" stroke-width="2" opacity="0.7"/>
+  
+  <!-- Legend -->
+  <text x="50" y="230" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#1e293b">Goal: Find assignment making ALL clauses TRUE</text>
+  
+  <!-- Example solution -->
+  <rect x="50" y="240" width="300" height="30" rx="5" fill="#fef3c7" stroke="#f59e0b" stroke-width="1"/>
+  <text x="200" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#92400e">Example: x₁=TRUE, x₂=FALSE, x₃=TRUE, ..., xₙ=FALSE</text>
+  <text x="200" y="265" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#92400e">✓ All m clauses satisfied!</text>
+</svg>

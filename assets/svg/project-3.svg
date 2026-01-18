@@ -1,0 +1,7 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#dc2626"/>
+  <polygon points="100,80 180,120 160,180 80,140" fill="white" opacity="0.2"/>
+  <polygon points="220,100 300,140 280,200 200,160" fill="white" opacity="0.3"/>
+  <line x1="50" y1="220" x2="350" y2="220" stroke="white" stroke-width="2" opacity="0.4"/>
+  <text x="200" y="250" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Structural Analysis</text>
+</svg>

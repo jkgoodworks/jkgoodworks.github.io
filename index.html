@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ioannis Kallergis | Engineering Solutions & Innovation</title>
+    <meta name="description"
+        content="Engineering consultant specializing in innovative solutions, project development, and technical publications.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Skip to content -->
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="#">
+                        <span class="logo-text">Ioannis Kallergis</span>
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="#offers">Offers</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#publications">Publications</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-image">
+                        <div class="hero-circle">
+                            <img src="assets/images/professional.png" alt="Ioannis Kallergis" class="hero-photo">
+                        </div>
+                    </div>
+                    <div class="hero-text">
+                        <div class="greeting">Hi there</div>
+                        <h1 class="hero-title">I'm Ioannis.</h1>
+                        <p class="hero-subtitle">Just a personal space to share a few ideas with other agents</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Projects Section -->
+        <section class="expandable-section" id="projects">
+            <div class="container">
+                <div class="section-preview" data-section="projects">
+                    <h2 class="section-title">Featured Projects</h2>
+                    <p class="section-subtitle">Engineering solutions in action</p>
+                    <div class="expand-hint">Click to explore →</div>
+                </div>
+
+                <div class="section-content" id="projects-content">
+                    <div class="section-content-inner">
+                        <div class="projects-grid">
+                            <div class="project-card">
+                                <div class="project-image">
+                                    <img src="assets/svg/3sat-problem.svg" alt="3-SAT Problem Visualization">
+                                </div>
+                                <div class="project-content">
+                                    <h3>3-SAT Problem Solver</h3>
+                                    <p>discrete combinatorial problems solved via continuous optimization. In this case
+                                        the
+                                        3sat-problem.</p>
+                                    <div class="project-tech">
+                                        <span class="tech-tag">Algorithm Design</span>
+                                        <span class="tech-tag">Optimization</span>
+                                        <span class="tech-tag">Logic</span>
+                                    </div>
+                                    <a href="assets/pdfs/subject.pdf" class="paper-link" target="_blank">View Project
+                                        Details (PDF)</a>
+                                </div>
+                            </div>
+                            <div class="project-card">
+                                <div class="project-image">
+                                    <img src="assets/svg/iot-simple-fixed.svg"
+                                        alt="IoT Environmental Monitoring System">
+                                </div>
+                                <div class="project-image">
+                                    <img src="assets/svg/iot-dashboard-clean.svg" alt="IoT Dashboard Interface">
+                                </div>
+                                <div class="project-content">
+                                    <h3>IoT Environmental Monitoring & Dashboard</h3>
+                                    <p>University team project using ESP32-C3 nodes with AHT20 and ENS160 sensors.
+                                        Complete
+                                        system with UDP gateway to MQTT broker, InfluxDB storage, and real-time Grafana
+                                        dashboard visualization.</p>
+                                    <div class="project-tech">
+                                        <span class="tech-tag">ESP32-C3</span>
+                                        <span class="tech-tag">MQTT</span>
+                                        <span class="tech-tag">InfluxDB</span>
+                                        <span class="tech-tag">Grafana</span>
+                                    </div>
+                                    <a href="https://github.com/socrates018/iot-project" class="paper-link"
+                                        target="_blank">View on GitHub</a>
+                                </div>
+                            </div>
+                            <div class="project-card">
+                                <div class="project-image">
+                                    <img src="assets/images/bitcoinprice.png" alt="Bitcoin Price Prediction">
+                                </div>
+                                <div class="project-content">
+                                    <h3>Bitcoin Price Prediction</h3>
+                                    <p>Machine learning models for cryptocurrency price forecasting using time series
+                                        analysis and neural networks. Credit goes to Professor Hochreiter and
+                                        Schmidhuber
+                                        for their brilliance.</p>
+                                    <div class="project-tech">
+                                        <span class="tech-tag">Machine Learning</span>
+                                        <span class="tech-tag">Python</span>
+                                        <span class="tech-tag">Neural Networks</span>
+                                        <span class="tech-tag">Time Series</span>
+                                    </div>
+                                    <a href="assets/pdfs/BTCpredictions.pdf" class="paper-link" target="_blank">View
+                                        Analysis (PDF)</a>
+                                </div>
+                            </div>
+                            <div class="project-card">
+                                <div class="project-image">
+                                    <img src="parallel_architecture/fpuphoto.png?v=3"
+                                        alt="Parallel Architecture Design">
+                                </div>
+                                <div class="project-content">
+                                    <h3>Parallel Architecture Design</h3>
+                                    <p>IEEE-754 compliant floating point unit (FPU) implementation in Verilog/VHDL
+                                        supporting arithmetic operations and targeting FPGA/ASIC platforms.</p>
+                                    <div class="project-tech">
+                                        <span class="tech-tag">IEEE-754</span>
+                                        <span class="tech-tag">Verilog/VHDL</span>
+                                        <span class="tech-tag">FPGA/ASIC</span>
+                                        <span class="tech-tag">Hardware Design</span>
+                                    </div>
+                                    <div class="project-dropdown">
+                                        <span class="paper-link dropdown-trigger">View Project Details ></span>
+                                        <span class="dropdown-menu">
+                                            <a href="parallel_architecture/ECE338_FINAL_PRESENTATION.pdf"
+                                                target="_blank">Final Presentation</a>
+                                            <a href="parallel_architecture/Parallel_Architecture_Report.pdf"
+                                                target="_blank">Technical Report</a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Publications Section -->
+        <section class="expandable-section" id="publications">
+            <div class="container">
+                <div class="section-preview" data-section="publications">
+                    <h2 class="section-title">Publications & Research</h2>
+                    <p class="section-subtitle">Some theoretical ideas</p>
+                    <div class="expand-hint">Click to explore →</div>
+                </div>
+
+                <div class="section-content" id="publications-content">
+                    <div class="section-content-inner">
+                        <div style="text-align: center; padding: 40px; color: white;">
+                            <p>No content for now.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Offers Section -->
+        <section class="expandable-section" id="offers">
+            <div class="container">
+                <div class="section-preview" data-section="offers">
+                    <h2 class="section-title">Engineering Implementation</h2>
+                    <p class="section-subtitle">If you have a specific use case, I can set it up for you.</p>
+                    <div class="expand-hint">Click to explore →</div>
+                </div>
+
+                <div class="section-content" id="offers-content">
+                    <div class="section-content-inner">
+                        <div class="offers-grid">
+                            <div class="offer-card">
+                                <div class="offer-icon">Ez1(📷🚪🏋️)</div>
+                                <h3>Gym Subscriber Authentication</h3>
+                                <p>Learns users. Notifies staff when unsubscribed members try to enter.</p>
+                            </div>
+                            <div class="offer-card">
+                                <div class="offer-icon">💡🛠️💭</div>
+                                <h3>Custom Solutions</h3>
+                                <p>If you wanna solve a specific problem, I can adapt
+                                    existing tools and build new ones that work for your situation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="footer-logo-text">Ioannis Kallergis</span>
+                    </div>
+                    <p>© 2025 Ioannis Kallergis</p>
+                </div>
+
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/in/john-kall/" aria-label="LinkedIn">LinkedIn</a>
+                    <a href="https://x.com/jkgoodworks" aria-label="X (Twitter)">X</a>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 30px; font-size: 12px; color: #9ca3af;">
+                <a href="/privacy-policy/" style="color: inherit; text-decoration: none; margin: 0 10px;">Privacy
+                    Policy</a>
+                <a href="/terms/" style="color: inherit; text-decoration: none; margin: 0 10px;">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

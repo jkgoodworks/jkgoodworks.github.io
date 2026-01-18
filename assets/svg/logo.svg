@@ -1,0 +1,6 @@
+<!-- This is a placeholder for the logo image -->
+<!-- In a real implementation, you would replace this with the actual logo -->
+<svg width="150" height="28" xmlns="http://www.w3.org/2000/svg">
+  <rect width="150" height="28" fill="#3b82f6" rx="4"/>
+  <text x="75" y="18" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">AliAbdaal.com</text>
+</svg>

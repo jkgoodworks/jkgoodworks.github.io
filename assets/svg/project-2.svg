@@ -1,0 +1,8 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#059669"/>
+  <circle cx="80" cy="80" r="25" fill="white" opacity="0.3"/>
+  <circle cx="200" cy="100" r="35" fill="white" opacity="0.2"/>
+  <circle cx="320" cy="120" r="20" fill="white" opacity="0.3"/>
+  <path d="M50 200 Q200 150 350 200" stroke="white" stroke-width="3" fill="none" opacity="0.4"/>
+  <text x="200" y="250" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Energy Management</text>
+</svg>

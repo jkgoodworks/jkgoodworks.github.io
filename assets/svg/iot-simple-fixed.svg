@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="300" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  
+  <!-- Title -->
+  <text x="200" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1e293b">Environmental Monitoring System</text>
+  
+  <!-- ESP32 Sensor Nodes -->
+  <rect x="30" y="50" width="80" height="60" rx="8" fill="#3b82f6" stroke="#1e40af" stroke-width="2"/>
+  <text x="70" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white">ESP32-C3</text>
+  <text x="70" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">AHT20 🌡️💧</text>
+  <text x="70" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">ENS160 🌬️</text>
+  
+  <rect x="130" y="50" width="80" height="60" rx="8" fill="#3b82f6" stroke="#1e40af" stroke-width="2"/>
+  <text x="170" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white">ESP32-C3</text>
+  <text x="170" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">AHT20 🌡️💧</text>
+  <text x="170" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">ENS160 🌬️</text>
+  
+  <rect x="290" y="50" width="80" height="60" rx="8" fill="#3b82f6" stroke="#1e40af" stroke-width="2"/>
+  <text x="330" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white">ESP32-C3</text>
+  <text x="330" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">AHT20 🌡️�</text>
+  <text x="330" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">ENS160 🌬️</text>
+  
+  <!-- Dots indicating more nodes -->
+  <circle cx="235" cy="80" r="3" fill="#64748b"/>
+  <circle cx="245" cy="80" r="3" fill="#64748b"/>
+  <circle cx="255" cy="80" r="3" fill="#64748b"/>
+  
+  <!-- Raspberry Pi 1 Gateway -->
+  <rect x="150" y="140" width="100" height="50" rx="10" fill="#10b981" stroke="#047857" stroke-width="2"/>
+  <text x="200" y="158" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Raspberry Pi 1</text>
+  <text x="200" y="172" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">UDP Gateway</text>
+  <text x="200" y="184" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Port 8080</text>
+  
+  <!-- MQTT Broker -->
+  <ellipse cx="200" cy="220" rx="80" ry="20" fill="#8b5cf6" stroke="#7c3aed" stroke-width="2"/>
+  <text x="200" y="228" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">MQTT Broker</text>
+  
+  <!-- UDP connections from ESP32s to RPi1 -->
+  <line x1="70" y1="110" x2="180" y2="140" stroke="#f59e0b" stroke-width="2" stroke-dasharray="3,3"/>
+  <text x="110" y="125" font-family="Arial, sans-serif" font-size="8" fill="#f59e0b">UDP</text>
+  
+  <line x1="170" y1="110" x2="200" y2="140" stroke="#f59e0b" stroke-width="2" stroke-dasharray="3,3"/>
+  
+  <line x1="330" y1="110" x2="220" y2="140" stroke="#f59e0b" stroke-width="2" stroke-dasharray="3,3"/>
+  <text x="280" y="125" font-family="Arial, sans-serif" font-size="8" fill="#f59e0b">UDP</text>
+  
+  <!-- MQTT connection from RPi1 to broker -->
+  <line x1="200" y1="190" x2="200" y2="200" stroke="#8b5cf6" stroke-width="3"/>
+  <text x="210" y="195" font-family="Arial, sans-serif" font-size="8" fill="#8b5cf6">MQTT</text>
+  
+  <!-- Data types -->
+  <text x="20" y="260" font-family="Arial, sans-serif" font-size="10" fill="#475569">📊 Temp, Humidity, CAQI, TVOC, eCO2</text>
+  <text x="20" y="275" font-family="Arial, sans-serif" font-size="10" fill="#475569">🔄 Real-time UDP → MQTT → Database</text>
+  <text x="20" y="290" font-family="Arial, sans-serif" font-size="10" fill="#475569">👥 Team 19 - University IoT Project</text>
+</svg>

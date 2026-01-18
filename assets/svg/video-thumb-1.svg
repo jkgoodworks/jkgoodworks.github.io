@@ -1,0 +1,6 @@
+<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="200" fill="#7c3aed"/>
+  <polygon points="150,50 180,80 150,110 120,80" fill="white" opacity="0.8"/>
+  <circle cx="150" cy="80" r="20" fill="none" stroke="white" stroke-width="3" opacity="0.6"/>
+  <text x="150" y="160" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">Engineering Concepts</text>
+</svg>
