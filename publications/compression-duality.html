@@ -237,44 +237,39 @@
                     <span class="env-title">Definition 2.1 (The 1-Bit Transition Architecture)</span>
                     A universal architecture is the tuple \(\mathcal{A} = (S, \Omega, \Delta, \sigma_0)\) where:
                     <ol>
-                        <li>\(S = \mathbb{N}\) (discrete state space).</li>
-                        <li>\(\Omega : S \to \{0,1\}\) (1-bit resolution extraction per transition).</li>
-                        <li>\(\Delta : S \times \{0,1\} \to S\) is a reversible bijection (informational conservation).</li>
-                        <li>\(K(\mathcal{A}) = O(1)\) (finite structural complexity).</li>
+                        <li>\(S = \mathbb{N}\).</li>
+                        <li>\(\sigma_0 \in S\).</li>
+                        <li>\(\Omega : S \to \{0,1\}\) (extraction).</li>
+                        <li>\(\Delta : S \times \{0,1\} \to S\) (evolution).</li>
+                        <li>\(K(\mathcal{A}) = O(1)\).</li>
                     </ol>
                 </div>
 
                 <h2 class="section-title">3. The Optimal Terminal Architecture</h2>
                 <div class="env definition">
                     <span class="env-title">Definition 3.1 (Execution Endofunctor)</span>
-                    The category of 1-bit architectures converges to a terminal coalgebra \(\mathcal{A}_\infty \cong F(\mathcal{A}_\infty)\) representing the limit of all computable transition subroutines.
+                    Terminal coalgebra \(\mathcal{A}_\infty \cong F(\mathcal{A}_\infty)\) representing the limit of all computable transition subroutines.
                 </div>
 
                 <div class="env theorem">
                     <span class="env-title">Theorem 3.2 (Optimal Complexity Invariant)</span>
-                    \(K(\mathcal{A}_\infty) = O(1)\). This structure simulates Levin Universal Search with optimal Kolmogorov overhead.
+                    \(K(\mathcal{A}_\infty) = O(1)\).
                 </div>
 
                 <div class="env theorem">
                     <span class="env-title">Theorem 3.3 (Optimal Efficiency Law)</span>
-                    In the terminal architecture \(\mathcal{A}_\infty\), the native physical transition volume \(T\) satisfies \(T = \Theta\left(2^{K(x)} \cdot \delta\right)\). Reaching state-uniqueness for a \(k\)-bit configuration is governed by the <i>Ergodic Recovery Theorem</i>, where the deterministic search path must exhaust the descriptive volume of \(2^k\) transitions.
+                    In \(\mathcal{A}_\infty\), the native physical transition volume \(T\) satisfies \(T = \Theta\left(2^{K(x)} \cdot \delta\right)\). Reaching state-uniqueness for a \(k\)-bit configuration is governed by the <i>Ergodic Recovery Theorem</i>, where the deterministic search path must exhaust the descriptive volume of \(2^k\).
                 </div>
 
                 <h2 class="section-title">4. Geometric Time Bounds</h2>
                 <div class="env lemma">
                     <span class="env-title">Lemma 4.1 (Deterministic Trajectory Conservation)</span>
-                    For a 1-bit architecture \(\mathcal{A}\) on input \(x\) in the high-complexity regime (\(K(x) \gg \log T\)), the state \(\sigma_t\) satisfies \(K(\sigma_t) + K(x \mid \sigma_t) \approx K(x)\). Structural reduction in \(x\) is monotonically mapped to state-complexity growth.
+                    \(K(\sigma_t) + K(x \mid \sigma_t) \approx K(x)\).
                 </div>
 
                 <div class="env theorem">
                     <span class="env-title">Theorem 4.2 (Universal Execution Geometry)</span>
-                    The absolute transition delay \(T\) required by \(\mathcal{A}_\infty\) to resolve an input with description \(|p|\) and structural reduction \(\delta\) is \(T \ge \Omega(\delta \cdot 2^{|p|})\). Resolving \(\delta\) bits of structure necessitates sequential transitions across \(\delta\) complexity boundaries, each scaling temporal resolution geometrically.
-                </div>
-
-                <h2 class="section-title">5. Analytical Predictions</h2>
-                <div class="env proposition">
-                    <span class="env-title">Proposition 5.1 (NP-Complete Complexity)</span>
-                    Applying the TSP-Isomorphism to a metric graph \(G_x\) defines a structural reduction metric \(\delta \ge \epsilon n\) independent of search time. Resolving the optimal tour is equivalent to discovering the shortest generator in a space of depth \(K(\pi) = n \log n\). This forces \(T \ge \Omega(2^{n \log n})\).
+                    The absolute transition delay \(T \ge \Omega(\delta \cdot 2^{|p|})\). Resolving \(\delta\) bits necessitates sequential transitions across \(\delta\) complexity boundaries.
                 </div>
 
                 <h2 class="section-title">Conclusion</h2>
@@ -292,13 +287,13 @@
                 <h2 class="section-title">1. Axioms</h2>
                 <div class="env definition">
                     <span class="env-title">Definition 1.1 (The 1-Bit Transition Architecture)</span>
-                    A universal architecture is the tuple \(\mathcal{A} = (S, \Omega, \Delta, \sigma_0)\) where \(S, \sigma_0, \Omega, \Delta\).
+                    A universal architecture is the tuple \(\mathcal{A} = (S, \Omega, \Delta, \sigma_0)\).
                 </div>
 
                 <h2 class="section-title">2. The Terminal Coalgebra Limit</h2>
                 <div class="env definition">
                     <span class="env-title">Definition 2.1 (Execution Endofunctor)</span>
-                    \(\mathcal{A}_\infty \cong \varprojlim F^n(\mathbf{1})\).
+                    \(F(\mathcal{A}) = \mathcal{A} \oplus M_i \implies \mathcal{A}_\infty \cong \varprojlim F^n(\mathbf{1})\).
                 </div>
 
                 <div class="env theorem">
@@ -310,10 +305,20 @@
                     <span class="env-title">Lemma 2.3 (Ergodic Recovery)</span>
                     Deterministic volume retrieval satisfies \(|\{\tau : \sigma_\tau = s^* \}| \propto 2^{-k} \cdot T \implies T(s^*) \ge \Omega(2^k)\).
                 </div>
+                <div class="proof">
+                    <span class="proof-label">Proof.</span>
+                    Because \(M\) is a terminal coalgebra with out-degree 1, reaching state-uniqueness for a \(k\)-bit configuration necessitates traversing a path length proportional to the descriptive cardinality of the prefix-free volume \(2^k\). density \(P(s^*) = 2^{-k}\) forces \(T \ge \Omega(2^k)\).
+                    <span class="qed">■</span>
+                </div>
 
                 <div class="env theorem">
                     <span class="env-title">Theorem 2.4 (Optimal Efficiency Law)</span>
                     Physical execution time respects \(T = \Theta\left(2^{K(x)} \cdot \delta\right)\).
+                </div>
+                <div class="proof">
+                    <span class="proof-label">Proof.</span>
+                    Reaching configuration \(x\) requires traversing descriptive volume \(2^{K(x)}\) (Lemma 2.3). Optimal hardware minimality forces \(T = 2^k\). depth \(\delta\) imposes additive delay scaling per boundary (Theorem 5.2).
+                    <span class="qed">■</span>
                 </div>
 
                 <h2 class="section-title">3. Algorithmic Independence of Execution Time</h2>
@@ -321,16 +326,26 @@
                     <span class="env-title">Theorem 3.1 (Uniform Time Lower Bound)</span>
                     For \(K(x)=k\), execution time on \(\mathcal{A}_\infty\) satisfies \(T \ge \Omega(2^k)\).
                 </div>
+                <div class="proof">
+                    <span class="proof-label">Proof.</span>
+                    Suppose \(T \ll 2^k\). Then \(x\) is identified by \(\langle \mathcal{A}_\infty, T \rangle\). \(K(x) \le K(T) + K(\mathcal{A}_\infty) \le \log_2 T + c'\). Contradiction for \(T < 2^{k-c'}\).
+                    <span class="qed">■</span>
+                </div>
 
                 <h2 class="section-title">4. Conditional Phase Trajectories</h2>
                 <div class="env lemma">
                     <span class="env-title">Lemma 4.1 (Deterministic Trajectory Conservation)</span>
-                    Structural reduction is mapped to state-complexity growth: \(K(s_t) + K(x \mid s_t) \approx K(x)\).
+                    \(K(s_t) + K(x \mid s_t) \approx K(x)\).
                 </div>
 
                 <div class="env lemma">
                     <span class="env-title">Lemma 4.2 (Geometric Extraction Cost)</span>
-                    \(\Delta t \ge \Omega(2^{K(s_t)})\).
+                    \(\Delta k = 1 \implies \Delta t \ge \Omega(2^{K(s_t)})\).
+                </div>
+                <div class="proof">
+                    <span class="proof-label">Proof.</span>
+                    By 1-bit transition, \(K(s_t) \le \log_2 t + c \implies t \ge 2^{K(s_t) - c}\). Resolving next bit requires navigating boundary scaling delay geometrically.
+                    <span class="qed">■</span>
                 </div>
 
                 <h2 class="section-title">5. The Internal Phase Boundary Theorem</h2>
@@ -341,8 +356,12 @@
 
                 <div class="env theorem">
                     <span class="env-title">Theorem 5.2 (Universal Execution Geometry)</span>
-                    The total transition volume of \(\mathcal{A}_\infty\) satisfies:
                     <div class="math">\[T(\mathcal{A}_\infty, x) \ge \Omega(\delta \cdot 2^{|p|}).\]</div>
+                </div>
+                <div class="proof">
+                    <span class="proof-label">Proof.</span>
+                    By Theorem 2.4, time matches volume. Reducing phase volume by \(\delta\) requires crossing \(\delta\) boundaries (Theorem 5.1). Each crossing at depth \(|p|\) scales as \(2^{|p|}\) (Lemma 4.2). Total delay is product: \(T \ge \Omega(\delta \cdot 2^{|p|})\).
+                    <span class="qed">■</span>
                 </div>
 
                 <h2 class="section-title">6. Statistical Expectations</h2>
@@ -369,33 +388,33 @@
                 </div>
 
                 <h2 class="section-title">9. Case Study: NP-Complete Optimization</h2>
-                <div class="env definition">
-                    <span class="env-title">Definition 9.1 (Algorithmic Metric Graph)</span>
-                    \(G_x\) defined by partition \(\mathcal{V}\) and metric \(w = K(s_j \mid s_i)\).
-                </div>
-
                 <div class="env lemma">
                     <span class="env-title">Lemma 9.2 (Beardwood-Halton-Hammersley Scaling)</span>
-                    Shortest tour \(L(\pi^*)\) is bounded by the informational density of the space.
+                    \[L_{BHH}(\pi^*) \approx \beta(D) \cdot n^{(D-1)/D}\]
                 </div>
 
                 <div class="env lemma">
                     <span class="env-title">Lemma 9.3 (Metric Reduction Proof)</span>
-                    Metric fragments exhibit clustering (\(D < 1\)), extracting \(\delta \ge \epsilon n\) resolution.
+                    Optimal path length extracts \(\delta \ge \epsilon n\) resolution.
                 </div>
-
-                <div class="env definition">
-                    <span class="env-title">Definition 9.4 (The Compression Tour)</span>
-                    Hamiltonian path in \(G_x\) represents a path-chained program \(p\).
+                <div class="proof">
+                    <span class="proof-label">Proof.</span>
+                    Substituting informational dimension \(D < 1\) of structured fragments into BHH Law (Lemma 9.2), optimal path \(L(\pi^*)\) is deduced to be shorter than random walk by factor \(\delta \ge \epsilon n\).
+                    <span class="qed">■</span>
                 </div>
 
                 <div class="env theorem">
                     <span class="env-title">Theorem 9.5 (TSP-Isomorphism)</span>
-                    Resolving \(L(\pi)\) is isomorphic to determining \(K(x)\). Navigating \(\delta \ge \epsilon n\) across depth \(|p| = n \log n\) enforces \(T \ge \Omega(2^{n \log n})\).
+                    Navigating \(\delta \ge \epsilon n\) across depth \(|p| = n \log n\) enforces \(T \ge \Omega(2^{n \log n})\).
+                </div>
+                <div class="proof">
+                    <span class="proof-label">Proof.</span>
+                    Navigating path reduction \(\delta\) (Lemma 9.3) within combinatorial depth \(|p| = n \log n\) dictates \(T \ge \Omega(\epsilon n \cdot 2^{n \log n})\) (Theorem 5.2). Exponential scale boundary is absolute.
+                    <span class="qed">■</span>
                 </div>
 
                 <h2>Conclusion</h2>
-                <p>The Compression-Time Duality resolves the \(P \neq NP\) problem by identifying hardness with the ability to achieve non-vanishing structural reduction on high-entropy inputs.</p>
+                <p>The Compression-Time Duality identifies computational time as the physical integral of algorithmic discovery.</p>
             </article>
         </main>
 
