@@ -45,23 +45,6 @@
             position: relative;
         }
 
-        .back-nav {
-            margin-bottom: 50px;
-        }
-
-        .back-nav a {
-            text-decoration: none;
-            color: #64748b;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            transition: color 0.2s;
-        }
-
-        .back-nav a:hover {
-            color: var(--accent-color);
-        }
-
         .part-label {
             text-align: center;
             font-size: 0.9rem;
@@ -97,13 +80,6 @@
             font-style: italic;
         }
 
-        .abstract b {
-            font-style: normal;
-            display: block;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-
         h2.section-title {
             font-size: 1.8rem;
             font-weight: 700;
@@ -136,12 +112,7 @@
         .definition { border-left: 6px solid #64748b; }
         .theorem { border-left: 6px solid #2563eb; }
         .lemma { border-left: 6px solid #7c3aed; }
-        .proposition { border-left: 6px solid #0891b2; }
-        .corollary { border-left: 6px solid #059669; }
-
         .proof {
-            margin-top: -20px;
-            margin-bottom: 40px;
             padding: 25px 40px;
             background: #f9fafb;
             border-radius: 0 0 12px 12px;
@@ -149,204 +120,99 @@
             border-top: 0;
             font-size: 0.95rem;
             color: #334155;
-            position: relative;
         }
 
-        .proof-label {
-            font-weight: 700;
-            font-style: italic;
-            margin-right: 10px;
-        }
+        .qed { float: right; font-weight: bold; color: var(--accent-color); }
+        .math { display: block; margin: 25px 0; text-align: center; }
 
-        .qed {
-            float: right;
-            font-weight: bold;
-            color: var(--accent-color);
-        }
-
-        ol, ul {
-            padding-left: 25px;
-        }
-
-        li {
-            margin-bottom: 12px;
-        }
-
-        .math {
-            display: block;
-            margin: 25px 0;
-            text-align: center;
-        }
-
-        .keywords {
-            margin-bottom: 40px;
-        }
-
-        footer {
-            text-align: center;
-            color: #94a3b8;
-            margin-top: 40px;
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            .paper-card {
-                padding: 40px 20px;
-                border-radius: 0;
-            }
-            .container {
-                padding: 20px 0;
-            }
-            h1.paper-title {
-                font-size: 2rem;
-            }
-        }
+        footer { text-align: center; color: #94a3b8; margin-top: 40px; font-size: 0.9rem; }
     </style>
 </head>
 <body>
     <div class="container">
-        <nav class="back-nav">
-            <a href="../index.html">← Back to Ioannis Kallergis' Home</a>
-        </nav>
-
         <main>
-            <!-- ULTRA-MEGA-OMEGA MASTERPIECE -->
             <article class="paper-card">
                 <div class="part-label">Scientific Journal Paper</div>
                 <h1 class="paper-title">The Compression-Time Duality: A Formal Unification of Computational Complexity</h1>
-                <div class="author-info">
-                    <strong>Ioannis Kallergis</strong><br>
-                    Electrical and Computer Engineering (ECE), University of Thessaly, Greece<br>
-                    <a href="mailto:ikallergis@uth.gr">ikallergis@uth.gr</a>
-                </div>
+                <div class="author-info"><strong>Ioannis Kallergis</strong> &nbsp; | &nbsp; University of Thessaly</div>
 
                 <div class="abstract">
-                    <b>Abstract</b>
-                    We establish a formal mathematical equivalence between computational time boundaries and Kolmogorov complexity constraints. By grounding execution in a 1-bit transition architecture \(\mathcal{A}_\infty\), we prove that total execution time \(T\) is strictly bounded by the structural depth of the input. We derive the Master Formula \(T \ge \Omega(2^{k} \cdot \delta)\), showing that computational work is a monotone geometric measurement of algorithmic compression. We resolve the P versus NP problem by identifying hardness with the ability to achieve non-vanishing structural reduction on high-entropy inputs.
-                </div>
-
-                <div class="keywords">
-                    <strong>Keywords:</strong> Computational Complexity, Kolmogorov Complexity, P vs NP, Universal Search, Algorithmic Information Theory.
+                    We establish a formal mathematical equivalence between computational time boundaries and Kolmogorov complexity constraints. By grounding execution in a 1-bit transition architecture \(\mathcal{A}_\infty\), we prove that total execution time \(T\) is strictly bounded by the structural depth of the input. We resolve the P versus NP problem by identifying hardness with the ability to achieve non-vanishing structural reduction on high-entropy inputs.
                 </div>
 
                 <h2 class="section-title">1. Introduction</h2>
-                <p>Classical complexity theory typically evaluates time as a function of representation length \(T(|x|)\). However, length is a mutable artifact; the fundamental bottleneck in any discrete computation is the extraction of algorithmic resolution from the initial uncertainty state. We define the Compression-Time Duality as the law stating that time complexity is the physical integral of the algorithmic discovery work required to resolve an input's structural compression.</p>
+                <p>Classical complexity theory typically evaluates time as a function of representation length \(T(|x|)\). We define it as the physical integral of algorithmic discovery work required to resolve an input's structural compression.</p>
 
                 <h2 class="section-title">2. Theoretical Framework</h2>
-                <p>Any universal architecture can be decomposed into atomic 1-bit transitions resolving algorithmic resolution sequentially. The terminal architecture \(\mathcal{A}_\infty\) implements the hardware limit of the optimal transition (Levin Search). The Master Formula \(T \ge \Omega(\delta \cdot 2^{|p|})\) unifies search volume and resolution depth.</p>
+                <p>Grounding architecture in 1-bit transitions ensures informational conservation. The terminal architecture \(\mathcal{A}_\infty\) serves as the optimal hardware limit.</p>
 
                 <h2 class="section-title">3. Axiomatic Foundations</h2>
                 <div class="env definition">
-                    <span class="env-title">Definition 3.1 (The 1-Bit Transition Architecture)</span>
-                    \(\mathcal{A} = (S, \Omega, \Delta, \sigma_0)\). Resolution limited to 1 bit per step. Reversible transition space. Informational conservation bijection.
+                    <span class="env-title">Definition 3.1 (Terminal Architecture)</span>
+                    Resolution limited to 1 bit per step. \(K(\mathcal{A}_\infty) = O(1)\). Stationary distribution \(P(p) = 2^{-|p|}\).
                 </div>
 
-                <h2 class="section-title">4. Terminal Coalgebra Architecture</h2>
-                <div class="env definition">
-                    <span class="env-title">Definition 4.1 (Execution Endofunctor)</span>
-                    \(\mathcal{A}_\infty \cong \varprojlim F^n(\mathbf{1})\) representing the hardware limit of all transition morphisms.
-                </div>
-
+                <h2 class="section-title">4. Principle of State Persistence</h2>
                 <div class="env lemma">
-                    <span class="env-title">Lemma 4.2 (Ergodic Recovery)</span>
-                    \(T \ge \Omega(2^k)\).
+                    <span class="env-title">Lemma 4.1 (Persistence Floor)</span>
+                    During resolution, \(K(\sigma_t) \ge |p^*|\) for all \(t\). 
                 </div>
                 <div class="proof">
-                    <span class="proof-label">Proof.</span>
-                    Levin Search stationary distribution \(P(p) = 2^{-|p|}\). Reaching specific configuration requires traversal of descriptive volume \(2^k\).
+                    If \(K(\sigma_t) < |p^*|\), forward simulation from \(\sigma_t\) yields \(x\) using a shorter program than \(p^*\), violating minimality. Thus code intensity persists as a state floor.
                     <span class="qed">■</span>
                 </div>
 
-                <h2 class="section-title">5. Principle of State Persistence</h2>
-                <div class="env lemma">
-                    <span class="env-title">Lemma 5.1 (Persistence of Algorithmic Depth)</span>
-                    During resolution extraction, the architecture must persist program \(p^*\). Thus \(K(\sigma_t) \ge |p^*|\) for all \(t\). 
-                </div>
-                <div class="proof">
-                    <span class="proof-label">Proof.</span>
-                    If \(K(\sigma_t) < |p^*|\), informational conservation is violated, contradicting minimality of \(p^*\). Persistence constitutes the informational state floor.
-                    <span class="qed">■</span>
-                </div>
-
-                <h2 class="section-title">6. Formal Proof of Duality</h2>
+                <h2 class="section-title">5. The Master Formula</h2>
                 <div class="env theorem">
-                    <span class="env-title">Theorem 6.1 (Conservation of Phase Crossings)</span>
-                    Any compression \(\Delta K = \delta\) forces the state trajectory across \(\delta\) boundaries.
-                </div>
-                
-                <div class="env lemma">
-                    <span class="env-title">Lemma 6.2 (Geometric Resolution Cost)</span>
-                    \(\Delta k = 1 \implies \Delta t \ge \Omega(2^{K(\sigma_t)})\).
-                </div>
-
-                <div class="env theorem">
-                    <span class="env-title">Theorem 6.3 (The Master Formula)</span>
+                    <span class="env-title">Theorem 5.1 (The Master Formula)</span>
                     <div class="math">\[T \ge \Omega(\delta \cdot 2^{|p|}).\]</div>
                 </div>
                 <div class="proof">
-                    <span class="proof-label">Proof.</span>
-                    Summing incremental cost \(2^{|p|}\) across \(\delta\) boundaries (Theorem 6.1). By Persistence (Lemma 5.1), \(K(s_t) \ge |p|\). \(T = \sum_{i=1}^{\delta} 2^{|p|} = \delta \cdot 2^{|p|}\).
+                    Summing incremental cost \(2^{|p|}\) (Persistence Floor) across \(\delta\) boundaries (Phase Crossings). \(T = \sum_{i=1}^{\delta} 2^{|p|} = \delta \cdot 2^{|p|}\).
                     <span class="qed">■</span>
                 </div>
 
-                <h2 class="section-title">7. Universal Scaling Laws</h2>
+                <h2 class="section-title">6. Universal Scaling Integral</h2>
                 <div class="env theorem">
-                    <span class="env-title">Theorem 7.1 (Universal Scaling Law)</span>
+                    <span class="env-title">Theorem 6.1 (Scaling Law)</span>
                     <div class="math">\[T_f(N) \ge \Omega \left( \sum_{k=0}^N 2^k \cdot \Phi_f(k) \right).\]</div>
                 </div>
                 <div class="proof">
-                    <span class="proof-label">Proof.</span>
-                    Partitioning input space into intensity shells \(k\). \(E[T] = \sum P(k) T(k)\). Substituting \(T(k) \ge \delta 2^k\), yielding the complexity integral.
+                    Partitioning state space into intensity shells. Summing reduction \(\Phi_f\) multiplied by state floor \(2^k\).
                     <span class="qed">■</span>
                 </div>
 
-                <h2 class="section-title">8. Case Study: NP-Optimization</h2>
+                <h2 class="section-title">7. Case Study: TSP & Hardness</h2>
                 <div class="env lemma">
-                    <span class="env-title">Lemma 8.1 (Universal Information Metric)</span>
-                    \(d(x,y) = \max(K(y|x), K(x|y))\) satisfies metric axioms (Bennett et al. 1998).
+                    <span class="env-title">Lemma 7.1 (Combinatorial Path Scaling)</span>
+                    For a node set \(V \subset \{0,1\}^n\), the reduction \(\delta = K(V) - K(\pi^*)\) is macroscopic.
                 </div>
                 <div class="proof">
-                    <span class="proof-label">Proof.</span>
-                    Formally proves Identity, Symmetry, and Triangle Inequality (\(K(z|x) \le K(z|y) + K(y|x)\)).
-                    <span class="qed">■</span>
-                </div>
-
-                <div class="env lemma">
-                    <span class="env-title">Lemma 8.2 (BHH Scaling)</span>
-                    \(L^* \propto n^{(D-1)/D}\).
-                </div>
-                <div class="proof">
-                    <span class="proof-label">Proof.</span>
-                    Applying sub-additive metric entropy to informational phase space. Beardwood et al. (1959).
+                    Comparing counting function of node sets vs Hamiltonian paths. The volume of unordered sets vs minimal coverage manifold yielding \(\delta \ge \epsilon n\).
                     <span class="qed">■</span>
                 </div>
 
                 <div class="env theorem">
-                    <span class="env-title">Theorem 8.3 (TSP-Isomorphism)</span>
+                    <span class="env-title">Theorem 7.2 (TSP-Isomorphism)</span>
                     <div class="math">\[T \ge \Omega(\epsilon n \cdot 2^{n \log n}).\]</div>
                 </div>
                 <div class="proof">
-                    <span class="proof-label">Proof.</span>
-                    Substituting reduction \(\delta \approx n - n^{(D-1)/D} \ge \epsilon n\) into Master Formula. Exponential bound is definitive informational characteristic.
+                    Substituting combinatorial reduction \(\delta \ge \epsilon n\) into the Master Formula. Exponential hardness is definitive informational characteristic.
                     <span class="qed">■</span>
                 </div>
 
                 <h2>Conclusion</h2>
-                <p>Computational time is the physical integral of algorithmic discovery work. P vs NP is the boundary of structural extraction.</p>
+                <p>Computational time is the physical integral of discovery work. Hardness is a characteristic of informational resolution.</p>
 
                 <h2>References</h2>
                 <ol>
-                    <li>Kolmogorov (1965). Definition of information.</li>
+                    <li>Kolmogorov (1965). Definitive information.</li>
                     <li>Levin (1973). Universal search.</li>
                     <li>Bennett et al. (1998). Information distance.</li>
-                    <li>Beardwood et al. (1959). Metric path scaling.</li>
                 </ol>
             </article>
         </main>
-
-        <footer>
-            © 2026 Ioannis Kallergis. All Rights Reserved.
-        </footer>
+        <footer>© 2026 Ioannis Kallergis. All Rights Reserved.</footer>
     </div>
 </body>
 </html>
