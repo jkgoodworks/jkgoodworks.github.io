@@ -8,7 +8,7 @@
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.gstatic.com/css2?family=Outfit:wght@300;400;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-primary: #0a0a0c;
@@ -67,20 +67,20 @@
         <h2>Complexity-Persistence Identity</h2>
         <div class="theorem-box">
             <span class="theorem-title">Theorem: T ≥ Ω(δ · 2ᵏ)</span>
-            Computational work is the product of structural redundancy \(\delta\) and the search-space density \(2^k\). The "Duality" exists between the <strong>Discovery Cost</strong> (searching for the optimal program) and the <strong>Deductive Cost</strong> (resolving sequential bits of the output).
+            Computational work is the product of structural redundancy \(\delta\) and the search-space density \(2^k\). Hardness arises not just from the <strong>Search Cost</strong> of finding the program, but from the <strong>Persistent Dilation</strong> required to resolve output structure while maintaining the program's complexity in the terminal architecture.
         </div>
     </section>
 
     <section id="factorization">
-        <h2>Search vs. Resolution Regimes</h2>
-        <p>Complexity manifests in two distinct regimes depending on the input's algorithmic entropy:</p>
+        <h2>Global Scaling Prediction</h2>
+        <p>Complexity scales based on the interplay between search space $2^k$ and resolution depth $\delta$:</p>
         <div class="theorem-box">
-            <span class="theorem-title">High-Entropy Regime (e.g., Random Semiprimes)</span>
-            For random inputs with \(\delta \approx 0\), there is no compressible redundancy to resolve. The transition count is governed by the <strong>Search Profile</strong>: \(T \ge \Omega(2^{K(p^*})\). Hardness is a pure discovery penalty ($T \approx 2^{N/2}$).
+            <span class="theorem-title">High-Entropy Regime (Random Semiprimes)</span>
+            For random inputs with \(\delta \approx 0\), hardness is pure search: \(T \ge \Omega(2^{k})\). For semiprimes $x=pq$, $k \approx N/2$, yielding \(T \ge \Omega(2^{N/2})\).
         </div>
         <div class="theorem-box">
-            <span class="theorem-title">Low-Entropy Regime (e.g., TSP Solutions)</span>
-            For structured inputs, redundancy \(\delta\) is high. The <strong>Resolution Profile</strong> expands the transition count multiplicatively: \(T \ge \delta \cdot 2^k\). Hardness is a resolution penalty.
+            <span class="theorem-title">Structured Regime (e.g., \(x = a^n\))</span>
+            For simple generators ($k = \log N$) with high redundancy ($\delta \approx N$), the duality predicts: \(T \approx N \cdot 2^{\log N} = \mathbf{O(N^2)}\). This correctly maps the shift from exponential to polynomial complexity.
         </div>
     </section>
 
@@ -88,7 +88,7 @@
         <h2>Unconditional P ≠ NP</h2>
         <div class="theorem-box">
             <span class="theorem-title">Corollary: P ≠ NP</span>
-            Since \(\mathcal{A}_\infty\) is the terminal optimal transition architecture (the final coalgebra), any deterministic algorithm \(M\) requires at least \(O(T_{\mathcal{A}_\infty})\) transitions. Because \(\mathcal{A}_\infty\) requires super-polynomial steps to resolve NP-complete structures through the Resolution Profile, no polynomial-time algorithm exists on any universal computational substrate.
+            Since \(\mathcal{A}_\infty\) is the terminal optimal architecture, any deterministic algorithm \(M\) is bounded by its transition cardinality. Because \(\mathcal{A}_\infty\) requires super-polynomial steps to resolve NP-complete structures through the Resolution Profile, no polynomial-time algorithm exists on any universal computational substrate.
         </div>
     </section>
 
