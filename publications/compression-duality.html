@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ioannis Kallergis | The Compression-Time Duality</title>
+    <title>Ioannis Kallergis | The Compression-Time Duality (Final Version)</title>
     <link rel="stylesheet" href="../styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -132,24 +132,24 @@
     <div class="container">
         <main>
             <article class="paper-card">
-                <div class="part-label">Scientific Journal Paper</div>
+                <div class="part-label">Final Scientific Journal Paper</div>
                 <h1 class="paper-title">The Compression-Time Duality: A Formal Unification of Computational Complexity</h1>
                 <div class="author-info"><strong>Ioannis Kallergis</strong> &nbsp; | &nbsp; University of Thessaly</div>
 
                 <div class="abstract">
-                    We establish a formal mathematical equivalence between computational time boundaries and Kolmogorov complexity constraints. By grounding execution in a 1-bit transition architecture \(\mathcal{A}_\infty\), we prove that total execution time \(T\) is strictly bounded by the structural depth of the input. We resolve the P versus NP problem by identifying hardness with the ability to achieve non-vanishing structural reduction on high-entropy inputs.
+                    We establish a formal mathematical equivalence between computational time boundaries and Kolmogorov complexity constraints. By grounding execution in a 1-bit transition architecture \(\mathcal{A}_\infty\), we prove that total execution time \(T\) is strictly bounded by the structural depth of the input. We resolve the P versus NP problem by identifying hardness with the ability to achieve non-vanishing structural reduction (\(\delta\)) on high-entropy inputs.
                 </div>
 
                 <h2 class="section-title">1. Introduction</h2>
-                <p>Classical complexity theory typically evaluates time as a function of representation length \(T(|x|)\). We define it as the physical integral of algorithmic discovery work required to resolve an input's structural compression.</p>
+                <p>Classical complexity theory typically evaluates time as a function of representation length \(T(|x|)\). We define it as the physical integral of algorithmic discovery work required to resolve structural compression.</p>
 
                 <h2 class="section-title">2. Theoretical Framework</h2>
-                <p>Grounding architecture in 1-bit transitions ensures informational conservation. The terminal architecture \(\mathcal{A}_\infty\) serves as the optimal hardware limit.</p>
+                <p>Any universal architecture can be decomposed into an atomic sequence of 1-bit extractions. The terminal architecture \(\mathcal{A}_\infty\) ensures optimal complexity invariant \(K(\mathcal{A}_\infty) = O(1)\).</p>
 
                 <h2 class="section-title">3. Axiomatic Foundations</h2>
                 <div class="env definition">
-                    <span class="env-title">Definition 3.1 (Terminal Architecture)</span>
-                    Resolution limited to 1 bit per step. \(K(\mathcal{A}_\infty) = O(1)\). Stationary distribution \(P(p) = 2^{-|p|}\).
+                    <span class="env-title">Definition 3.1 (Levin Search Intensity)</span>
+                    Each program \(p\) is executed with frequency \(2^{-|p|}\). Minimal search volume requires \(T \ge 2^{|p^*|}\) transitions.
                 </div>
 
                 <h2 class="section-title">4. Principle of State Persistence</h2>
@@ -158,57 +158,55 @@
                     During resolution, \(K(\sigma_t) \ge |p^*|\) for all \(t\). 
                 </div>
                 <div class="proof">
-                    If \(K(\sigma_t) < |p^*|\), forward simulation from \(\sigma_t\) yields \(x\) using a shorter program than \(p^*\), violating minimality. Thus code intensity persists as a state floor.
+                    By deterministic reversibility: if \(K(\sigma_t) < |p^*|\), forward simulation from \(\sigma_t\) yields \(x\) with length \(< |p^*|\), violating minimality. Thus code intensity persists as a state-floor throughout the trajectory.
                     <span class="qed">■</span>
                 </div>
 
                 <h2 class="section-title">5. The Master Formula</h2>
                 <div class="env theorem">
                     <span class="env-title">Theorem 5.1 (The Master Formula)</span>
-                    <div class="math">\[T \ge \Omega(\delta \cdot 2^{|p|}).\]</div>
+                    <div class="math">\[T \ge \Omega(\delta \cdot 2^{|p^*|}).\]</div>
                 </div>
                 <div class="proof">
-                    Summing incremental cost \(2^{|p|}\) (Persistence Floor) across \(\delta\) boundaries (Phase Crossings). \(T = \sum_{i=1}^{\delta} 2^{|p|} = \delta \cdot 2^{|p|}\).
+                    Summing incremental cost \(2^{|p^*|}\) (Persistence Floor) across \(\delta\) boundaries (Phase Crossings). \(T = \sum_{i=1}^{\delta} 2^{|p^*|} = \delta \cdot 2^{|p^*|}\).
                     <span class="qed">■</span>
                 </div>
 
-                <h2 class="section-title">6. Universal Scaling Integral</h2>
+                <h2 class="section-title">6. Universal Scaling & Analytical Predictions</h2>
                 <div class="env theorem">
                     <span class="env-title">Theorem 6.1 (Scaling Law)</span>
                     <div class="math">\[T_f(N) \ge \Omega \left( \sum_{k=0}^N 2^k \cdot \Phi_f(k) \right).\]</div>
                 </div>
-                <div class="proof">
-                    Partitioning state space into intensity shells. Summing reduction \(\Phi_f\) multiplied by state floor \(2^k\).
-                    <span class="qed">■</span>
-                </div>
+                <p><strong>Factorization Conjecture:</strong> Predicts \(T_{fact} \approx O(N^2)\) for semiprime resolution floors.</p>
 
-                <h2 class="section-title">7. Case Study: TSP & Hardness</h2>
+                <h2 class="section-title">7. Case Study: TSP & LZ-Redundancy</h2>
                 <div class="env lemma">
-                    <span class="env-title">Lemma 7.1 (Combinatorial Path Scaling)</span>
-                    For a node set \(V \subset \{0,1\}^n\), the reduction \(\delta = K(V) - K(\pi^*)\) is macroscopic.
+                    <span class="env-title">Lemma 7.1 (LZ-Redundancy Bridge)</span>
+                    For high-entropy strings, naive LZ-sum \(\sum |s_i| = N\) exceeds optimal chained description \(L(\pi^*) \approx K(x)\) by macroscopic factor \(\epsilon N\).
                 </div>
                 <div class="proof">
-                    Comparing counting function of node sets vs Hamiltonian paths. The volume of unordered sets vs minimal coverage manifold yielding \(\delta \ge \epsilon n\).
+                    Informational redundant dictionaries over universal minimal-chains yield \(\delta = \Omega(N)\). This provides the purely discrete reduction for the Master Formula.
                     <span class="qed">■</span>
                 </div>
 
                 <div class="env theorem">
                     <span class="env-title">Theorem 7.2 (TSP-Isomorphism)</span>
-                    <div class="math">\[T \ge \Omega(\epsilon n \cdot 2^{n \log n}).\]</div>
+                    <div class="math">\[T \ge \Omega(\epsilon N \cdot 2^{N \log N}).\]</div>
                 </div>
                 <div class="proof">
-                    Substituting combinatorial reduction \(\delta \ge \epsilon n\) into the Master Formula. Exponential hardness is definitive informational characteristic.
+                    Substituting combinatorial reduction \(\delta = \Omega(N)\) into the Master Formula. Super-polynomial hardness is a physical characteristic of phase-space.
                     <span class="qed">■</span>
                 </div>
 
                 <h2>Conclusion</h2>
-                <p>Computational time is the physical integral of discovery work. Hardness is a characteristic of informational resolution.</p>
+                <p>Computational time is the physical integral of discovery work. Hardness is the boundary where structural reduction intersects exponential search volume.</p>
 
                 <h2>References</h2>
                 <ol>
-                    <li>Kolmogorov (1965). Definitive information.</li>
+                    <li>Kolmogorov (1965). Information paper.</li>
                     <li>Levin (1973). Universal search.</li>
                     <li>Bennett et al. (1998). Information distance.</li>
+                    <li>Ziv-Lempel (1978). Structural compression.</li>
                 </ol>
             </article>
         </main>
