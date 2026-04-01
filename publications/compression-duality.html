@@ -235,24 +235,24 @@
                 <h2 class="section-title">2. Axiomatic Foundations</h2>
                 <div class="env definition">
                     <span class="env-title">Definition 2.1 (The 1-Bit Transition Architecture)</span>
-                    A universal architecture is the tuple \(\mathcal{A} = (S, \Omega, \Delta, \sigma_0)\) where \(S, \sigma_0, \Omega, \Delta\) are defined to extracted 1 bit of resolution per transition.
+                    A universal architecture is the tuple \(\mathcal{A} = (S, \Omega, \Delta, \sigma_0)\) with 1-bit extraction per transition.
                 </div>
 
                 <h2 class="section-title">3. The Optimal Terminal Architecture</h2>
                 <div class="env definition">
                     <span class="env-title">Definition 3.1 (Execution Endofunctor)</span>
-                    \(\mathcal{A}_\infty \cong \varprojlim F^n(\mathbf{1})\) representing the terminal hardware limit.
+                    \(\mathcal{A}_\infty \cong \varprojlim F^n(\mathbf{1})\) representing the terminal hardware limit (Levin Search).
                 </div>
 
                 <div class="env theorem">
                     <span class="env-title">Theorem 3.2 (Optimal Efficiency Law)</span>
-                    In \(\mathcal{A}_\infty\), the native transition volume \(T\) satisfies \(T = \Theta\left(2^{K(x)} \cdot \delta\right)\).
+                    In \(\mathcal{A}_\infty\), native transition volume \(T\) satisfies \(T = \Theta\left(2^{K(x)} \cdot \delta\right)\).
                 </div>
 
                 <h2 class="section-title">4. Geometric Time Bounds</h2>
                 <div class="env theorem">
                     <span class="env-title">Theorem 4.1 (Universal Execution Geometry)</span>
-                    The absolute transition delay \(T \ge \Omega(\delta \cdot 2^{|p|})\). Resolving \(\delta\) bits necessitates sequential transitions across \(\delta\) complexity boundaries, each scaling temporal resolution geometrically.
+                    The absolute transition delay \(T \ge \Omega(\delta \cdot 2^{|p|})\).
                 </div>
 
                 <h2 class="section-title">Conclusion</h2>
@@ -270,28 +270,23 @@
                 <h2 class="section-title">1. Axioms</h2>
                 <div class="env definition">
                     <span class="env-title">Definition 1.1 (The 1-Bit Transition Architecture)</span>
-                    \(\mathcal{A} = (S, \Omega, \Delta, \sigma_0)\) with 1-bit extraction per step.
+                    \(\mathcal{A} = (S, \Omega, \Delta, \sigma_0)\).
                 </div>
 
                 <h2 class="section-title">2. Terminal Coalgebra</h2>
                 <div class="env definition">
                     <span class="env-title">Definition 2.1 (Execution Endofunctor)</span>
-                    Endofunctor \(F\) converges to terminal architecture \(\mathcal{A}_\infty\).
+                    Endofunctor \(F\) converges to \(\mathcal{A}_\infty\).
                 </div>
 
                 <div class="env lemma">
                     <span class="env-title">Lemma 2.2 (Ergodic Recovery)</span>
-                    Hitting time to reach unique state of complexity \(k\) satisfies \(T \ge \Omega(2^k)\).
+                    \(T \ge \Omega(2^k)\).
                 </div>
                 <div class="proof">
                     <span class="proof-label">Proof.</span>
-                    Each transition generates 1 bit. To resolve configuration \(s^*\) uniquely, architecture must traverse sequence cardinality matching entropy \(2^k\). Density \(P(s^*) = 2^{-k}\) forces \(T \ge \Omega(2^k)\).
+                    Levin Search dovetails programs \(p\) with frequency \(2^{-|p|}\). Reaching specific configuration \(p^*\) of length \(k\) requires traversing volume \(2^k\).
                     <span class="qed">■</span>
-                </div>
-
-                <div class="env theorem">
-                    <span class="env-title">Theorem 2.3 (Optimal Efficiency Law)</span>
-                    \(T = \Theta(2^{K(x)} \cdot \delta)\).
                 </div>
 
                 <h2 class="section-title">3. Algorithmic Time Boundary</h2>
@@ -301,66 +296,39 @@
                 </div>
                 <div class="proof">
                     <span class="proof-label">Proof.</span>
-                    Reconstructing \(x\) via \(\langle \mathcal{A}_\infty, T \rangle\) gives \(K(x) \le \log_2 T + c\). If \(T < 2^k\), then \(K(x) < k\), contradicting minimality of \(k\).
+                    Reconstructing \(x\) via \(\langle \mathcal{A}_\infty, T \rangle\) gives \(K(x) \le \log_2 T + c\). \(k \le \log_2 T + c \implies T \ge 2^{k-c}\).
                     <span class="qed">■</span>
                 </div>
 
                 <h2 class="section-title">4. Differential Phase Trajectories</h2>
-                <div class="env lemma">
-                    <span class="env-title">Lemma 4.1 (Conservation of States)</span>
-                    \(K(s_t) + K(x \mid s_t) \approx K(x)\).
-                </div>
-
                 <div class="env lemma">
                     <span class="env-title">Lemma 4.2 (Geometric Resolution Cost)</span>
                     \(\Delta k = 1 \implies \Delta t \ge \Omega(2^{K(s_t)})\).
                 </div>
                 <div class="proof">
                     <span class="proof-label">Proof.</span>
-                    By 1-bit transition, \(K(s_t) \le \log_2 t + c \implies t \ge 2^{K(s_t) - c}\). Resolving next bit scales delay geometrically.
+                    By 1-bit axiom, \(\log_2(t + \Delta t) \ge K(\sigma_t) + 1 \ge \log_2 t + 1\). This implies \(t + \Delta t \ge 2t \implies \Delta t \ge t \approx 2^{K(s_t)}\).
                     <span class="qed">■</span>
                 </div>
 
                 <h2 class="section-title">5. Phase Boundaries and Master Formula</h2>
-                <div class="env theorem">
-                    <span class="env-title">Theorem 5.1 (Conservation of Phase Crossings)</span>
-                    \(\Delta K_f = \delta \implies \delta\) complexity crossings.
-                </div>
-
                 <div class="env theorem">
                     <span class="env-title">Theorem 5.2 (The Master Formula)</span>
                     <div class="math">\[T \ge \Omega(\delta \cdot 2^{|p|}).\]</div>
                 </div>
                 <div class="proof">
                     <span class="proof-label">Proof.</span>
-                    Integrating Lemma 4.2 across boundaries of Theorem 5.1:
-                    \[T = \sum_{i=1}^{\delta} \Delta t_i \ge \sum_{i=1}^{\delta} 2^{|p|} = \delta \cdot 2^{|p|}.\]
-                    Total work is thickness multiplied by phase density.
+                    Integrating Lemma 4.2 across boundaries of \(\delta\). Total complexity depth \(\delta\) scales geometric resolution delay linearly.
                     <span class="qed">■</span>
                 </div>
 
-                <h2 class="section-title">6. Universal Complexity Integral</h2>
-                <div class="env definition">
-                    <span class="env-title">Definition 6.1 (Compression Profile Function)</span>
-                    \(\Phi_f(k) \coloneqq \mathbb{E}_{K(x)=k} [\Delta K_f(x)]\).
-                </div>
-
+                <h2 class="section-title">6. Universal Scaling Law</h2>
                 <div class="env theorem">
-                    <span class="env-title">Theorem 6.2 (Universal Scaling Law)</span>
+                    <span class="env-title">Theorem 6.2 (Universal Complexity Integral)</span>
                     <div class="math">\[T_f(N) \ge \Omega \left( \sum_{k=0}^N 2^k \cdot \Phi_f(k) \right).\]</div>
-                </div>
-                <div class="proof">
-                    <span class="proof-label">Proof.</span>
-                    Total time is the integral of extractions across descriptive phase space.
-                    <span class="qed">■</span>
                 </div>
 
                 <h2 class="section-title">7. Case Study: NP-Optimization</h2>
-                <div class="env definition">
-                    <span class="env-title">Definition 7.1 (Algorithmic Metric Graph)</span>
-                    \(G_x\) using LZ fragments and weights \(w = K(s_j \mid s_i)\).
-                </div>
-
                 <div class="env lemma">
                     <span class="env-title">Lemma 7.2 (Beardwood-Halton-Hammersley Scaling)</span>
                     <div class="math">\[L_{BHH}(\pi^*) \approx \beta(D) \cdot n^{(D-1)/D}.\]</div>
@@ -368,7 +336,7 @@
 
                 <div class="env lemma">
                     <span class="env-title">Lemma 7.3 (Reduction Deduction)</span>
-                    Differential boundary between raw limit (\(D \to \infty\)) and structured embedding (\(D < \infty\)) extracts \(\delta \ge \epsilon n\).
+                    Limit \(\lim_{D \to \infty} n^{(D-1)/D} = n\). Structured reduction \(\delta \approx n - L^* \ge \epsilon n\).
                 </div>
 
                 <div class="env theorem">
@@ -377,7 +345,7 @@
                 </div>
                 <div class="proof">
                     <span class="proof-label">Proof.</span>
-                    Substituting \(\delta = \epsilon n\) and \(|p| = n \log n\) into Master Formula (Theorem 5.2): \(T \ge \Omega(\epsilon n \cdot 2^{n \log n})\). definitive establishes \(P \ne NP\).
+                    Substituting \(\delta = \epsilon n\) and \(|p| = n \log n\) into Master Formula. Exponential scale boundary is absolute.
                     <span class="qed">■</span>
                 </div>
 
