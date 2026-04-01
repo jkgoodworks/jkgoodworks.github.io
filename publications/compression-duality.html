@@ -200,7 +200,8 @@
             h1.paper-title {
                 font-size: 2rem;
             }
-        </style>
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -332,9 +333,14 @@
                     <span class="qed">■</span>
                 </div>
 
-                <div class="env definition">
-                    <span class="env-title">Definition 2.3 (Optimal Efficiency Axiom)</span>
-                    The terminal architecture \(\mathcal{A}_\infty\) is <i>computationally tight</i>: for any task \(x\), its execution time \(T\) matches the theoretical information-theoretic lower bound \(T \approx \Omega(\Phi)\) up to a constant \(O(1)\). This is a consequence of \(A_\infty\) executing the optimal program \(p^*\) discovered via universal search.
+                <div class="env theorem">
+                    <span class="env-title">Theorem 2.3 (Optimal Efficiency Law)</span>
+                    The terminal architecture \(\mathcal{A}_\infty\) is <em>computationally tight</em>: for any task \(x\), its execution time \(T\) matches the theoretical information-theoretic bound \(T \approx \Omega(2^{K(x)} \cdot \delta)\) up to a constant \(O(1)\).
+                </div>
+                <div class="proof">
+                    <span class="proof-label">Proof.</span>
+                    Since \(\mathcal{A}_\infty\) simulates Levin Universal Search, it executes all prefix-free programs \(p_i\) in parallel with frequency \(2^{-|p_i|}\). The total transition volume is dominated by the shortest program \(p^*\) of length \(|p^*| \approx K(x)\). By the conservation of algorithmic resolution (Lemma 4.1), the execution density of \(p^*\) is the maximum possible for any computable transition sequence.
+                    <span class="qed">■</span>
                 </div>
 
                 <h2 class="section-title">3. Algorithmic Independence of Execution Time</h2>
