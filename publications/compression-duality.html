@@ -245,13 +245,18 @@
                 </div>
 
                 <h2 class="section-title">3. The Optimal Terminal Architecture</h2>
-                <div class="env theorem">
-                    <span class="env-title">Theorem 3.1 (Survival of the Optimal Architecture \(\mathcal{A}_\infty\))</span>
-                    By Adámek's Theorem (1974), the category of 1-bit architectures converges to a terminal coalgebra \(\mathcal{A}_\infty \cong F(\mathcal{A}_\infty)\). This structure simulates Levin Universal Search with optimal hardware complexity \(K(\mathcal{A}_\infty) = O(1)\).
+                <div class="env definition">
+                    <span class="env-title">Definition 3.1 (Execution Endofunctor)</span>
+                    The category of 1-bit architectures converges to a terminal coalgebra \(\mathcal{A}_\infty \cong F(\mathcal{A}_\infty)\) representing the limit of all computable transition subroutines.
                 </div>
 
                 <div class="env theorem">
-                    <span class="env-title">Theorem 3.2 (Optimal Efficiency Law)</span>
+                    <span class="env-title">Theorem 3.2 (Optimal Complexity Invariant)</span>
+                    \(K(\mathcal{A}_\infty) = O(1)\). This structure simulates Levin Universal Search with optimal Kolmogorov overhead.
+                </div>
+
+                <div class="env theorem">
+                    <span class="env-title">Theorem 3.3 (Optimal Efficiency Law)</span>
                     In the terminal architecture \(\mathcal{A}_\infty\), the native physical transition volume \(T\) satisfies \(T = \Theta\left(2^{K(x)} \cdot \delta\right)\). Reaching state-uniqueness for a \(k\)-bit configuration is governed by the <i>Ergodic Recovery Theorem</i>, where the deterministic search path must exhaust the descriptive volume of \(2^k\) transitions.
                 </div>
 
@@ -291,19 +296,34 @@
                 </div>
 
                 <h2 class="section-title">2. The Terminal Coalgebra Limit</h2>
+                <div class="env definition">
+                    <span class="env-title">Definition 2.1 (Execution Endofunctor)</span>
+                    Define \(F : \mathbf{Arch} \to \mathbf{Arch}\) such that \(\mathcal{A}_\infty \cong \varprojlim F^n(\mathbf{1})\).
+                </div>
+
+                <div class="env theorem">
+                    <span class="env-title">Theorem 2.2 (Optimal Complexity Invariant)</span>
+                    \(K(\mathcal{A}_\infty) = O(1)\).
+                </div>
+                <div class="proof">
+                    <span class="proof-label">Proof.</span>
+                    By Adámek's Theorem, \(\mathcal{A}_\infty\) simulates Levin Search with finite program \(U\). Thus \(K(\mathcal{A}_\infty) = K(U) = O(1)\).
+                    <span class="qed">■</span>
+                </div>
+
                 <div class="env lemma">
-                    <span class="env-title">Lemma 2.1 (Ergodic Recovery)</span>
-                    Let \(M\) be a deterministic transition matrix on a state-space \(S\) with out-degree 1. For any target state \(s^* \in S\) with \(K(s^*)=k\), the transition volume \(T\) to reach \(s^*\) satisfies:
+                    <span class="env-title">Lemma 2.3 (Ergodic Recovery)</span>
+                    Let \(M\) be the deterministic transition matrix of \(\mathcal{A}_\infty\). For any target state \(s^*\) with \(K(s^*)=k\), reaching \(s^*\) requires:
                     <div class="math">\[|\{\tau \in \mathbb{N} : \sigma_\tau = s^* \}| \propto 2^{-k} \cdot T \implies T(s^*) \ge \Omega(2^k).\]</div>
                 </div>
 
                 <div class="env theorem">
-                    <span class="env-title">Theorem 2.2 (Optimal Efficiency Law)</span>
-                    The terminal architecture \(\mathcal{A}_\infty\) is <i>computationally tight</i>: its native physical execution time \(T\) satisfies \(T = \Theta\left(2^{K(x)} \cdot \delta\right)\).
+                    <span class="env-title">Theorem 2.4 (Optimal Efficiency Law)</span>
+                    The terminal architecture \(\mathcal{A}_\infty\) satisfies \(T = \Theta\left(2^{K(x)} \cdot \delta\right)\).
                 </div>
                 <div class="proof">
                     <span class="proof-label">Proof.</span>
-                    By the 1-bit transition axiom, reaching the unique \(k\)-bit configuration \(x\) requires a deterministic path traversing the descriptive volume. Substituting the <i>Ergodic Recovery Lemma (Lemma 2.1)</i>, the path must exhaust \(2^k\) transitions to achieve state-uniqueness, giving \(T = \Theta(2^K)\).
+                    Reaching configuration \(x\) identified by \(\mathcal{A}_\infty\) (Theorem 2.2) requires traversing the descriptive volume of \(2^k\) (Lemma 2.3). Structural depth \(\delta\) scale delay by Theorem 5.1.
                     <span class="qed">■</span>
                 </div>
 
@@ -315,7 +335,7 @@
                 </div>
                 <div class="proof">
                     <span class="proof-label">Proof.</span>
-                    By the Optimal Efficiency Law (Theorem 2.2), physical time matches the descriptive volume traversal. Any functional mapping reducing phase volume by \(\delta\) must transition across \(\delta\) complexity boundaries (Theorem 5.1). The minimum delay scales geometrically: \(T \ge \Omega(\delta \cdot 2^{|p|})\).
+                    By the Optimal Efficiency Law (Theorem 2.4), physical time matches the descriptive volume traversal. Navigation across \(\delta\) complexity boundaries (Theorem 5.1) forces \(T \ge \Omega(\delta \cdot 2^{|p|})\).
                     <span class="qed">■</span>
                 </div>
 
@@ -328,11 +348,6 @@
                 <div class="env lemma">
                     <span class="env-title">Lemma 4.2 (Geometric Extraction Cost)</span>
                     \(k_t - k_{t+1} = 1 \implies \Delta t \ge \Omega(2^{K(s_t)})\)
-                </div>
-                <div class="proof">
-                    <span class="proof-label">Proof.</span>
-                    By the 1-bit transition axiom, \(K(s_t) \le \log_2 t + c\). Resolving the next bit of resolution requires navigating the next complexity boundary, scaling the delay geometrically.
-                    <span class="qed">■</span>
                 </div>
 
                 <h2 class="section-title">5. The Internal Phase Boundary Theorem</h2>
@@ -377,7 +392,7 @@
                 </div>
                 <div class="proof">
                     <span class="proof-label">Proof.</span>
-                    By the Algorithmic Triangle Inequality, \(G_x\) is a metric space. Using the <i>BHH Scaling Lemma (Lemma 9.1)</i>, we substitute the informational dimension \(D < 1\) of structured fragments. This dictates that the optimal path length \(L(\pi^*)\) is smaller than the random walk length by a non-vanishing factor \(\delta \ge \epsilon n\).
+                    By the Algorithmic Triangle Inequality, \(G_x\) is a metric space. Using the <i>BHH Scaling Law (Lemma 9.1)</i>, substitutes informational dimension \(D < 1\) of structured fragments. This dictates optimal tour is shorter than random walk by \(\delta \ge \epsilon n\).
                     <span class="qed">■</span>
                 </div>
 
