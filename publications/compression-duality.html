@@ -15,6 +15,7 @@
             --paper-bg: #ffffff;
             --paper-shadow: 0 10px 30px rgba(0,0,0,0.1);
             --accent-color: #2563eb;
+            --proof-bg: #f8fafc;
         }
 
         body {
@@ -22,6 +23,8 @@
             color: #1e293b;
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
+            padding: 0;
+            margin: 0;
         }
 
         .paper-container {
@@ -58,28 +61,13 @@
         .author {
             font-size: 1.1rem;
             color: #475569;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             border-bottom: 1px solid #e2e8f0;
             padding-bottom: 1.5rem;
         }
 
-        .abstract {
-            background: #f1f5f9;
-            padding: 30px;
-            border-radius: 8px;
-            margin-bottom: 3rem;
-            font-style: italic;
-        }
-
-        .abstract h2 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            font-style: normal;
-        }
-
         section {
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         h2 {
@@ -87,41 +75,50 @@
             font-weight: 700;
             margin-bottom: 1.5rem;
             color: #0f172a;
-            border-left: 4px solid var(--accent-color);
-            padding-left: 1rem;
+            border-bottom: 2px solid #e2e8f0;
+            display: inline-block;
         }
 
         .theorem-env {
-            background-color: #f8fafc;
-            border: 1px solid #e2e8f0;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
+            background-color: #ffffff;
+            border-left: 4px solid var(--accent-color);
+            padding: 24px;
+            border-radius: 0 8px 8px 0;
+            margin: 30px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
         }
 
         .theorem-title {
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             display: block;
-            color: var(--accent-color);
+            color: #0f172a;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.85rem;
         }
 
         .proof {
-            margin-top: 15px;
+            background-color: var(--proof-bg);
+            padding: 24px;
+            border-radius: 8px;
+            margin-top: -15px;
+            margin-bottom: 30px;
             font-size: 0.95rem;
             color: #334155;
+            border: 1px solid #e2e8f0;
         }
 
-        .proof::before {
-            content: "Proof: ";
+        .proof-title {
             font-weight: 700;
             font-style: italic;
+            margin-right: 8px;
         }
 
-        .proof::after {
-            content: " ■";
+        .qed {
             float: right;
             color: var(--accent-color);
+            font-weight: bold;
         }
 
         code {
@@ -133,8 +130,9 @@
 
         @media (max-width: 768px) {
             .paper-container {
-                margin: 20px;
+                margin: 0;
                 padding: 40px 20px;
+                border-radius: 0;
             }
             h1 {
                 font-size: 1.8rem;
@@ -144,7 +142,7 @@
 </head>
 <body>
     <div class="container" style="max-width: 900px; margin: 0 auto; padding-top: 40px;">
-        <a href="../index.html" class="back-link">← Back to publications</a>
+        <a href="../index.html" class="back-link">← Back to Ioannis Kallergis' Home</a>
         
         <article class="paper-container">
             <h1>The Compression-Time Duality: A Formal Unification of Computational Complexity</h1>
@@ -155,34 +153,24 @@
                 <a href="mailto:ikallergis@uth.gr">ikallergis@uth.gr</a>
             </div>
 
-            <div class="abstract">
-                <h2>Abstract</h2>
-                We establish a formal mathematical equivalence between computational time boundaries and Kolmogorov complexity constraints. By grounding execution in a 1-bit transition architecture \(\mathcal{A}_\infty\), we prove that total execution time \(T\) is strictly bounded by the structural depth of the input. We derive the Master Formula \(T \ge \Omega(2^{k} \cdot \delta)\), showing that computational work is a monotone geometric measurement of algorithmic compression. We resolve the P versus NP problem by identifying hardness with the ability to achieve non-vanishing structural reduction on high-entropy inputs.
-            </div>
-
-            <p><strong>Keywords:</strong> Computational Complexity, Kolmogorov Complexity, P vs NP, Universal Search, Algorithmic Information Theory.</p>
-
-            <section>
-                <h2>1. Introduction</h2>
-                <p>Classical complexity theory typically evaluates time as a function of representation length \(T(|x|)\). However, length is a mutable artifact; the fundamental bottleneck in any discrete computation is the extraction of algorithmic resolution from the initial uncertainty state. We define the Compression-Time Duality as the law stating that time complexity is the physical integral of the algorithmic discovery work required to resolve an input's structural compression.</p>
-            </section>
-
-            <section>
-                <h2>2. Axiomatic Foundations</h2>
+            <section id="axioms">
+                <h2>1. Axiomatic Foundations</h2>
+                
                 <div class="theorem-env">
-                    <span class="theorem-title">Definition 2.1 (The 1-Bit Transition Architecture)</span>
+                    <span class="theorem-title">Definition 1.1 (The 1-Bit Transition Architecture)</span>
                     A universal architecture is the tuple \(\mathcal{A} = (S, \Omega, \Delta, \sigma_0)\) where:
                     <ol>
-                        <li>\(S = \mathbb{N}\) (discrete state space).</li>
-                        <li>\(\Omega : S \to \{0,1\}\) (1-bit resolution extraction per transition).</li>
-                        <li>\(\Delta : S \times \{0,1\} \to S\) is a reversible bijection (informational conservation).</li>
-                        <li>\(K(\mathcal{A}) = O(1)\) (finite structural complexity).</li>
+                        <li>\(S = \mathbb{N}\) (state space).</li>
+                        <li>\(\sigma_0 \in S\) (initial configuration).</li>
+                        <li>\(\Omega : S \to \{0,1\}\) (1-bit resolution extraction).</li>
+                        <li>\(\Delta : S \times \{0,1\} \to S\) is a reversible bijection (deterministic evolution).</li>
+                        <li>\(K(\mathcal{A}) = K(\Omega, \Delta, \sigma_0) = c < \infty\).</li>
                     </ol>
                 </div>
 
                 <div class="theorem-env">
-                    <span class="theorem-title">Definition 2.2 (Valid Algorithmic Compression)</span>
-                    For \(x \in \{0,1\}^N\), a computable function \(f\) achieves compression \(\delta = \Delta K_f\) on \(x\) iff:
+                    <span class="theorem-title">Definition 1.2 (Valid Algorithmic Compression)</span>
+                    For \(x \in \{0,1\}^N\), a computable function \(f\) achieves valid compression \(\delta = \Delta K_f\) on \(x\) iff:
                     <ol>
                         <li>\(|f(x)| \le N - \delta\).</li>
                         <li>\(\exists D, D(f(x)) = x\), with \(K(D) = O(1)\).</li>
@@ -190,52 +178,129 @@
                 </div>
             </section>
 
-            <section>
-                <h2>3. The Optimal Terminal Architecture</h2>
+            <section id="coalgebra">
+                <h2>2. The Terminal Coalgebra Limit</h2>
+                
                 <div class="theorem-env">
-                    <span class="theorem-title">Theorem 3.1 (Survival of the Optimal Architecture \(\mathcal{A}_\infty\))</span>
-                    By Adámek's Theorem (1974), the category of 1-bit architectures converges to a terminal coalgebra \(\mathcal{A}_\infty \cong F(\mathcal{A}_\infty)\). This structure simulates Levin Universal Search over all prefix-free programs \(\{p_i\}\) with optimal hardware complexity \(K(\mathcal{A}_\infty) = O(1)\).
+                    <span class="theorem-title">Definition 2.1 (Execution Endofunctor)</span>
+                    Let \(\mathbf{Arch}\) be the category of 1-bit architectures. Let \(\{M_i\}_{i \in \mathbb{N}}\) be a Gödel numbering of all computable transition subroutines. Define \(F : \mathbf{Arch} \to \mathbf{Arch}\):
+                    \[F(\mathcal{A}) = \mathcal{A} \oplus M_i \implies \mathcal{A}_\infty \cong \varprojlim F^n(\mathbf{1}).\]
+                </div>
+
+                <div class="theorem-env">
+                    <span class="theorem-title">Theorem 2.2 (Optimal Complexity Invariant)</span>
+                    \(K(\mathcal{A}_\infty) = O(1)\).
+                </div>
+                <div class="proof">
+                    <span class="proof-title">Proof.</span>
+                    By Adámek's Theorem and Kleene's Recursion Theorem, \(\mathcal{A}_\infty\) simulates Levin Universal Search. Since \(U\) is a finite prefix-free program, \(K(\mathcal{A}_\infty) = K(U) = O(1)\).
+                    <span class="qed">■</span>
+                </div>
+
+                <div class="theorem-env">
+                    <span class="theorem-title">Definition 2.3 (Optimal Efficiency Axiom)</span>
+                    The terminal architecture \(\mathcal{A}_\infty\) is <em>computationally tight</em>: for any task \(x\), its execution time \(T\) matches the theoretical information-theoretic lower bound \(T \approx \Omega(\Phi)\) up to a constant \(O(1)\). This is a consequence of \(A_\infty\) executing the optimal program \(p^*\) discovered via universal search.
                 </div>
             </section>
 
-            <section>
-                <h2>4. Geometric Time Bounds</h2>
+            <section id="independence">
+                <h2>3. Algorithmic Independence of Execution Time</h2>
+                
+                <div class="theorem-env">
+                    <span class="theorem-title">Theorem 3.1 (Uniform Time Lower Bound)</span>
+                    For \(x\) with \(K(x)=k\), execution time \(T\) on \(\mathcal{A}_\infty\) satisfies \(T \ge \Omega(2^k)\).
+                </div>
+                <div class="proof">
+                    <span class="proof-title">Proof.</span>
+                    Suppose \(T \ll 2^k\). Then \(x\) is uniquely identified by the tuple \(\langle \mathcal{A}_\infty, T \rangle\). 
+                    \[K(x) \le K(T) + K(\mathcal{A}_\infty) + O(1) \le \log_2 T + c'.\]
+                    If \(T < 2^{k-c'}\), then \(K(x) < k\), contradicting \(K(x)=k\). Thus \(T \ge 2^{k-c} = \Omega(2^k)\).
+                    <span class="qed">■</span>
+                </div>
+            </section>
+
+            <section id="trajectories">
+                <h2>4. Conditional Phase Trajectories</h2>
+                
                 <div class="theorem-env">
                     <span class="theorem-title">Lemma 4.1 (Deterministic Trajectory Conservation)</span>
-                    For a 1-bit architecture \(\mathcal{A}\) on input \(x\) in the high-complexity regime (\(K(x) \gg \log T\)), the state \(\sigma_t\) satisfies \(K(\sigma_t) + K(x \mid \sigma_t) \approx K(x)\). Thus, structural reduction in \(x\) is monotonically mapped to state-complexity growth. By the 1-bit transition axiom, \(K(\sigma_t) \le \log_2 t + c\), forcing geometric temporal resolution \(t \ge 2^{K(\sigma_t)}\).
+                    For a 1-bit architecture \(\mathcal{A}\) on input \(x\) in the high-complexity regime (\(K(x) \gg \log T\)), the state \(s_t\) satisfies \(K(s_t \mid x, t) = O(1)\). By the algorithmic chain rule:
+                    \[K(s_t, x \mid t) = K(x \mid t) + K(s_t \mid x, t) = K(s_t \mid t) + K(x \mid s_t, t).\]
+                    Since \(k_t \gg \log t\) for the relevant phase trajectory, we obtain \(K(s_t) + K(x \mid s_t) \approx K(x)\). Thus, structural reduction in \(x\) is monotonically mapped to state-complexity growth.
                 </div>
 
                 <div class="theorem-env">
-                    <span class="theorem-title">Theorem 4.2 (Universal Execution Volume)</span>
-                    The total transition volume \(T\) of \(\mathcal{A}_\infty\) required to output \(x\) is \(T = \min_p (2^{|p|} \cdot t_p)\). In the terminal architecture, discovery and execution are unified. Substituting the bit-reconstruction cost \(t_p \ge \delta\), we obtain the Duality Law: \[T \ge \Omega(\delta \cdot 2^{k}).\]
+                    <span class="theorem-title">Lemma 4.2 (Geometric Extraction Cost)</span>
+                    \(k_t - k_{t+1} = 1 \implies \Delta t \ge \Omega(2^{K(s_t)})\).
+                </div>
+                <div class="proof">
+                    <span class="proof-title">Proof.</span>
+                    By the 1-bit transition axiom, any state \(s_t\) reachable in \(t\) steps satisfies \(K(s_t) \le \log_2 t + c\). This forces the temporal resolution \(t \ge 2^{K(s_t) - c}\). By Lemma 4.1, as \(K(s_t)\) increases during the phase trajectory, the time \(\Delta t\) required to resolve the next bit of \(x\) scales geometrically.
+                    <span class="qed">■</span>
                 </div>
             </section>
 
-            <section>
-                <h2>5. Analytical Predictions of the Duality Thesis</h2>
+            <section id="boundary">
+                <h2>5. The Internal Phase Boundary Theorem</h2>
+                
                 <div class="theorem-env">
-                    <span class="theorem-title">Proposition 5.1 (NP-Complete Complexity)</span>
-                    By Theorem 10.3, TSP optimization evaluates the metric tour \(L(\pi^*)\) on algorithmic fragments. Using a minimal prefix-free partition (Lempel-Ziv) and a chained decoder \(D_{ch}\), the TSP optimum is isomorphic to the shortest-program discovery. Since resolving the optimal tour \(\pi^*\) requires exploring the \(2^{n \log n}\) phase-space of permutations, the Duality Law forces exponential time.
+                    <span class="theorem-title">Theorem 5.1 (Conservation of Phase Crossings)</span>
+                    If \(\Delta K_f(x) = \delta\), the state trajectory \(\tau\) must cross \(\delta\) distinct integer boundaries \(k \to k-1, \dots, k-\delta\).
+                </div>
+                <div class="proof">
+                    <span class="proof-title">Proof.</span>
+                    \(k_0 = K(x \mid \tau_0) = K(x)\). Since \(D(f(x))=x\), at halting time \(t_h\), \(K(x \mid \tau_{t_h}) \le |f(x)| \le K(x) - \delta\). By the continuity of the 1-bit architecture, the trajectory crosses \(\delta\) thresholds.
+                    <span class="qed">■</span>
                 </div>
 
                 <div class="theorem-env">
-                    <span class="theorem-title">Proposition 5.2 (Factorization Scaling)</span>
-                    For semiprimes \(N = pq\), structural reduction \(\delta\) is confined to the low-complexity composite regime (\(k \approx \log N\)). For high-\(K\) inputs, \(\Delta K_f \to 0\). The Scaling Integral yields \(T_{fact} = O(N^2)\).
+                    <span class="theorem-title">Theorem 5.2 (Universal Execution Volume)</span>
+                    The total transition volume \(T\) of \(\mathcal{A}_\infty\) required to output \(x\) is:
+                    \[T(\mathcal{A}_\infty, x) = \min_{p: U(p)=x} (2^{|p|} \cdot t_p).\]
+                </div>
+                <div class="proof">
+                    <span class="proof-title">Proof.</span>
+                    Levin Universal Search identifies program \(p\) in \(2^{|p|}\) transitions and executes each step of \(p\) with frequency \(2^{-|p|}\). Thus, for program \(p^*\) with halting time \(t_{p^*}\), the system completes \(t_{p^*} \cdot 2^{|p^*|}\) total transitions. In the terminal limit \(\mathcal{A}_\infty\), discovery and execution are integrated into a single volumetric bound. Substituting Theorem 5.1, we obtain the master duality \(T \ge \Omega(\delta \cdot 2^k)\).
+                    <span class="qed">■</span>
                 </div>
             </section>
 
-            <section>
-                <h2>6. Conclusion</h2>
-                <p>The Compression-Time Duality identifies computational time as the geometry of algorithmic discovery. P versus NP is formally revealed as the phase boundary where structural reduction intersects the exponential search volume of the terminal architecture.</p>
-            </section>
-            
-            <div style="border-top: 1px solid #e2e8f0; padding-top: 2rem; margin-top: 4rem;">
-                <h3>Supplementary Material</h3>
-                <p>Detailed derivations and the full symbolic proof are available in the raw LaTeX source:</p>
-                <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 15px;">
-                    <a href="../assets/papers/compression-time-duality/final_journal_paper.tex" style="text-decoration: none; padding: 10px 20px; border: 1px solid #e2e8f0; border-radius: 6px; color: #1e293b; font-weight: 500;" target="_blank">Journal Version (.tex)</a>
-                    <a href="../assets/papers/compression-time-duality/PUBLISHpure_math_duality.tex" style="text-decoration: none; padding: 10px 20px; border: 1px solid #e2e8f0; border-radius: 6px; color: #1e293b; font-weight: 500;" target="_blank">Formal Symbolic Proof (.tex)</a>
+            <section id="predictions">
+                <h2>6. Analytical Predictions and P vs NP</h2>
+                
+                <div class="theorem-env">
+                    <span class="theorem-title">Proposition 6.1 (Factorization Scaling)</span>
+                    Applying the Scaling Integral to semiprime factorization: for \(N = pq\) (\(p, q\) random), the non-vanishing structural reduction \(\delta\) is confined to the low-complexity composite regime (\(k \approx \log N\)). For high-\(K\) semiprimes, \(\Delta K_f \to 0\). Under the Optimal Efficiency Axiom, the system time satisfies:
+                    \[T_{fact} \approx \Omega(\Phi_{fact}) = O(N^2).\]
                 </div>
+
+                <div class="theorem-env">
+                    <span class="theorem-title">Proposition 6.2 (NP-Complete Complexity)</span>
+                    Evaluation of the TSP optimization task on fragmentation \(\mathcal{V}\) reveals that the Algorithmic Metric \(K(s|s')\) forces a non-vanishing structural reduction \(\delta \ge \epsilon N\) for high-\(k\) inputs. Identifying this optimal tour involves a search over the \(k\)-bit permutation volume, which by the Duality Law requires \(T \ge \Omega(2^N)\) transitions.
+                </div>
+            </section>
+
+            <section id="casestudy">
+                <h2>7. Case Study: TSP Isomorphism</h2>
+                
+                <div class="theorem-env">
+                    <span class="theorem-title">Definition 7.1 (Algorithmic Metric Graph)</span>
+                    For input \(x \in \{0,1\}^N\), let \(\mathcal{V} = \{s_1, \dots, s_n\}\) be the minimal prefix-free partition of \(x\) into \(n\) irreducible substrings. The algorithmic metric graph \(G_x = (V, E, w)\) is defined by \(w(s_i, s_j) = K(s_j \mid s_i)\).
+                </div>
+
+                <div class="theorem-env">
+                    <span class="theorem-title">Theorem 7.2 (TSP-Isomorphism)</span>
+                    Minimizing the path-chained description length \(L(\pi)\) is isomorphic to identifying the Kolmogorov limit \(K(x)\) within the language of path-chained generators.
+                </div>
+                <div class="proof">
+                    <span class="proof-title">Proof.</span>
+                    Identifying the optimal permutation \(\pi^*\) is a discovery task over the \(n! \approx 2^{n \log n}\) phase-space. By the Duality Law, the system time satisfies \(T \ge \Omega(\delta \cdot 2^{n \log n})\).
+                    <span class="qed">■</span>
+                </div>
+            </section>
+
+            <div style="border-top: 1px solid #e2e8f0; padding-top: 2rem; margin-top: 4rem; text-align: center;">
+                <p>Full archive and LaTeX source are available on <a href="https://github.com/jkgoodworks/jkgoodworks.github.io" target="_blank">GitHub</a>.</p>
             </div>
         </article>
     </div>
