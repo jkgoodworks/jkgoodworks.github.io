@@ -285,7 +285,7 @@
                 </div>
                 <div class="proof">
                     <span class="proof-label">Proof.</span>
-                    Each transition generates 1 bit. To resolve a configuration \(s^*\) uniquely, the architecture must traverse a sequence cardinality matching the entropy \(2^k\). density \(P(s^*) = 2^{-k}\) forces \(T \ge \Omega(2^k)\).
+                    Each transition generates 1 bit. To resolve configuration \(s^*\) uniquely, architecture must traverse sequence cardinality matching entropy \(2^k\). Density \(P(s^*) = 2^{-k}\) forces \(T \ge \Omega(2^k)\).
                     <span class="qed">■</span>
                 </div>
 
@@ -317,78 +317,67 @@
                 </div>
                 <div class="proof">
                     <span class="proof-label">Proof.</span>
-                    By 1-bit transition, \(K(s_t) \le \log_2 t + c\). Resolving the next bit from state \(s_t\) requires navigating a boundary that scales the delay geometrically.
+                    By 1-bit transition, \(K(s_t) \le \log_2 t + c \implies t \ge 2^{K(s_t) - c}\). Resolving next bit scales delay geometrically.
                     <span class="qed">■</span>
                 </div>
 
-                <h2 class="section-title">5. The Phase Boundary and Global Geometry</h2>
+                <h2 class="section-title">5. Phase Boundaries and Master Formula</h2>
                 <div class="env theorem">
                     <span class="env-title">Theorem 5.1 (Conservation of Phase Crossings)</span>
                     \(\Delta K_f = \delta \implies \delta\) complexity crossings.
                 </div>
 
                 <div class="env theorem">
-                    <span class="env-title">Theorem 5.2 (The Master Formula Deduction)</span>
+                    <span class="env-title">Theorem 5.2 (The Master Formula)</span>
                     <div class="math">\[T \ge \Omega(\delta \cdot 2^{|p|}).\]</div>
                 </div>
                 <div class="proof">
                     <span class="proof-label">Proof.</span>
-                    Integrating Lemma 4.2 across boundaries defined by Theorem 5.1:
+                    Integrating Lemma 4.2 across boundaries of Theorem 5.1:
                     \[T = \sum_{i=1}^{\delta} \Delta t_i \ge \sum_{i=1}^{\delta} 2^{|p|} = \delta \cdot 2^{|p|}.\]
-                    Total work is the product of thickness (\(\delta\)) and phase density (\(2^{|p|}\)).
+                    Total work is thickness multiplied by phase density.
                     <span class="qed">■</span>
                 </div>
 
-                <h2 class="section-title">6. Universal Complexity Scaling</h2>
+                <h2 class="section-title">6. Universal Complexity Integral</h2>
                 <div class="env definition">
                     <span class="env-title">Definition 6.1 (Compression Profile Function)</span>
                     \(\Phi_f(k) \coloneqq \mathbb{E}_{K(x)=k} [\Delta K_f(x)]\).
                 </div>
 
                 <div class="env theorem">
-                    <span class="env-title">Theorem 6.2 (Universal Complexity Integral)</span>
+                    <span class="env-title">Theorem 6.2 (Universal Scaling Law)</span>
                     <div class="math">\[T_f(N) \ge \Omega \left( \sum_{k=0}^N 2^k \cdot \Phi_f(k) \right).\]</div>
                 </div>
                 <div class="proof">
                     <span class="proof-label">Proof.</span>
-                    Summing geometric costs across the spectrum. For each level \(k\), work is product of number of states (\(2^k\)) and relative resolution extracted (\(\Phi_f(k)\)). Total time is integral of extraction work.
+                    Total time is the integral of extractions across descriptive phase space.
                     <span class="qed">■</span>
                 </div>
 
-                <h2 class="section-title">7. Predictive Deductions</h2>
-                <div class="env proposition">
-                    <span class="env-title">Proposition 7.1 (Factorization)</span>
-                    \(T_{fact} = O(N^2)\).
-                </div>
-
-                <div class="env proposition">
-                    <span class="env-title">Proposition 7.2 (NP-Hardness)</span>
-                    \(T_{opt} \ge \Omega(\epsilon n \cdot 2^{n \log n})\).
-                </div>
-
-                <h2 class="section-title">8. Case Study: NP-Optimization</h2>
+                <h2 class="section-title">7. Case Study: NP-Optimization</h2>
                 <div class="env definition">
-                    <span class="env-title">Definition 8.1 (Algorithmic Metric Graph)</span>
-                    \(G_x\) using Lempel-Ziv partition and weight \(w = K(s_j \mid s_i)\).
+                    <span class="env-title">Definition 7.1 (Algorithmic Metric Graph)</span>
+                    \(G_x\) using LZ fragments and weights \(w = K(s_j \mid s_i)\).
                 </div>
 
                 <div class="env lemma">
-                    <span class="env-title">Lemma 8.2 (BHH Scaling)</span>
-                    \[L_{BHH}(\pi^*) \approx \beta(D) \cdot n^{1-1/D}.\]
+                    <span class="env-title">Lemma 7.2 (Beardwood-Halton-Hammersley Scaling)</span>
+                    <div class="math">\[L_{BHH}(\pi^*) \approx \beta(D) \cdot n^{(D-1)/D}.\]</div>
                 </div>
 
                 <div class="env lemma">
-                    <span class="env-title">Lemma 8.3 (Non-Vanishing Reduction Deduction)</span>
-                    Structured dimension \(D < 1 \implies \delta \ge \epsilon n\).
+                    <span class="env-title">Lemma 7.3 (Reduction Deduction)</span>
+                    Differential boundary between raw limit (\(D \to \infty\)) and structured embedding (\(D < \infty\)) extracts \(\delta \ge \epsilon n\).
                 </div>
 
                 <div class="env theorem">
-                    <span class="env-title">Theorem 8.4 (TSP-Isomorphism)</span>
-                    \[T \ge \Omega(\epsilon n \cdot 2^{n \log n}).\]
+                    <span class="env-title">Theorem 7.4 (TSP-Isomorphism)</span>
+                    <div class="math">\[T \ge \Omega(\epsilon n \cdot 2^{n \log n}).\]</div>
                 </div>
                 <div class="proof">
                     <span class="proof-label">Proof.</span>
-                    Substituting \(\delta = \epsilon n\) and \(|p| = n \log n\) into Master Formula (Theorem 5.2): \(T \ge \Omega(\epsilon n \cdot 2^{n \log n})\). definitively establishes \(P \ne NP\).
+                    Substituting \(\delta = \epsilon n\) and \(|p| = n \log n\) into Master Formula (Theorem 5.2): \(T \ge \Omega(\epsilon n \cdot 2^{n \log n})\). definitive establishes \(P \ne NP\).
                     <span class="qed">■</span>
                 </div>
 
