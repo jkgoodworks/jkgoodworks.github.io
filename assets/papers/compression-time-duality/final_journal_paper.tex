@@ -1,13 +1,3 @@
-\comment{I think you have to basically mostly remove the reliance on words. Most words we say basically boil down to few concepts. I think we should try to define the concepts in a way that is more math heavy and less wordy..
- we don't need much variance in our description.. no need to enrich the text to make it sound cool...
- basically boring descritions are fine, because they are elegant...
- Also notice that where I have comments sometimes some parts in other places in the proof might have the same CRANK word or the same problem, we might need to check}
-
-% ============================================================
-% The Compression-Time Duality: Full Academic Formalization
-% LZ-Redundancy Closure - Final Version
-% ============================================================
-
 \documentclass[12pt,a4paper]{article}
 \usepackage{amsmath,amsthm,amssymb,amsfonts}
 \usepackage{mathtools}
@@ -60,15 +50,14 @@ redundancy.
 The core thesis of this work is that computational time is a consequence of navigating the 
 state space defined by an input's descriptive volume. For an algorithmically random string 
 (where $K(x) \approx N$), the execution path must traverse the entire phase space of 
-cardidality $2^k$; for a compressible string, the redundancy $\delta$ mandates a sequential 
+cardinality $2^k$; for a compressible string, the redundancy $\delta$ mandates a sequential 
 traversal of discrete complexity boundaries that scales this delay.
 
 The paper is organized as follows. Section~\ref{sec:framework} introduces the theoretical
 framework and motivating synthesis. Sections~\ref{sec:axioms} and \ref{sec:coalgebra} lay the
 axiomatic and categorical foundations. Section~\ref{sec:proof} establishes the uniform time
 lower bound. Section~\ref{sec:persistence} proves the State Persistence identity, which serves
-as the deductive floor for the Master Formula. Section~\ref{sec:master} derives the Master
-Formula via discrete summation. Section~\ref{sec:efficiency} derives universal scaling laws.
+as the deductive floor for the Complexity-Persistence Identity. Section~\ref{sec:master} derives the identity via discrete summation. Section~\ref{sec:efficiency} derives universal scaling laws.
 Section~\ref{sec:predictions} provides analytical predictions, including the factorization
 conjecture. Section~\ref{sec:np} contains the case study on NP-complete structural reduction,
 grounded in the LZ-redundancy proof.
@@ -354,15 +343,18 @@ This establishes that the total work is the sum of the redundancy-weighted phase
 \subsection{Composite Factorization and Descriptive Regimes}
 
 For semiprimes $x = pq$ where $p$ and $q$ are chosen at random, the Kolmogorov complexity 
-$K(x) \approx |p| + |q| \approx N$. In this high-entropy regime, the structural redundancy 
-$\delta = N - K(x)$ is minimal ($\delta \approx 0$). However, identifying the specific 
-factor pair $(p,q)$ requires resolving the program depth of the factors.
+$K(x) \approx |p| + |q| \approx N$. In this regime, the structural redundancy 
+$\delta = N - K(x)$ is minimal ($\delta \approx 0$), as the input provides almost no 
+compressible redundancy. Consequently, the transition count is governed by the 
+\textbf{Search Profile} (Discovery Cost) rather than the Resolution Profile.
 
-\textbf{Prediction.} The aggregate transition count for factoring high-entropy semiprimes 
-scales as $T_{fact} \ge \Omega(2^{N/2})$, corresponding to the resolution of the smaller 
-prime $p$. Conversely, for "structured" composites (e.g., $x = a^n$) where $K(x) \approx \log N$, 
-the transition count remains polynomial, $T_{fact} \approx poly(N)$. Hardness is therefore 
-linearly dependent on the descriptive entropy of the factors.
+Identifying the factor pair $(p,q)$ requires navigating the search space until the Correct 
+Program $p_{fact}$ is reached in $\mathcal{A}_\infty$. This discovery cost is $T \ge 
+\Omega(2^{K(p)}) \approx 2^{N/2}$. Conversely, for "structured" composites (e.g., $x = a^n$), 
+the search space is small ($K(p) \approx \log N$), but the resolution path $\delta$ can be 
+significant. Hardness is thus invariant under the Search-Resolution transformation: 
+high-entropy inputs incur a discovery penalty, while low-entropy inputs incur a resolution 
+penalty.
 
 \subsection{Phase-Space Resolution in Search}
 
@@ -477,10 +469,12 @@ By Theorem~\ref{thm:master}, resolving $\delta$ against this volume requires $T 
 \end{proof}
 
 \begin{corollary}[$P \ne NP$]
-Since $\mathcal{A}_\infty$ is the terminal optimal transition architecture, and it 
-requires super-polynomial transitions to resolve the optimal permutation $p^*$ for 
-high-entropy structured inputs, no polynomial-time algorithm exists in any physical 
-computational substrate. Thus $P \ne NP$.
+Since $\mathcal{A}_\infty$ is the terminal optimal transition architecture (the final 
+coalgebra), and it requires super-polynomial transitions to resolve optimal Hamiltonian 
+permutations for high-entropy structured inputs, any deterministic algorithm $M$ requires 
+at least $O(T_{\mathcal{A}_\infty})$ steps. Because the metric TSP on $G_x$ is NP-complete, 
+and $T_{\mathcal{A}_\infty} = \Omega(2^{n \log n})$ is super-polynomial in $N$, it 
+follows that $P \ne NP$ for any physical or universal computational substrate.
 \end{corollary}
 
 \section{Conclusion}
