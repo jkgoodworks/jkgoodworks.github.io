@@ -298,11 +298,11 @@
 
                 <div class="env theorem">
                     <span class="env-title">Theorem 2.2 (Optimal Efficiency Law)</span>
-                    The terminal architecture \(\mathcal{A}_\infty\) is <i>computationally tight</i>: its native physical execution time \(T\) precisely mirrors the theoretical information-theoretic bound \(T = \Theta\left(\min_p 2^{|p|} \cdot t_p\right)\).
+                    The terminal architecture \(\mathcal{A}_\infty\) is <i>computationally tight</i>: its native physical execution time \(T\) precisely mirrors the theoretical information-theoretic bound \(T = \Theta\left(2^{K(x)} \cdot \delta\right)\).
                 </div>
                 <div class="proof">
                     <span class="proof-label">Proof.</span>
-                    Because it lacks oracle priors, \(\mathcal{A}_\infty\)'s internal transition state must systematically overlay the descriptive phase space. Physical clock cycles correspond to the navigation of descriptively overlayed phase-space states, defining time directly as the discovery volume.
+                    Let \(S_k\) be the set of states reachable in \(t\) steps with complexity \(k\). By the 1-bit axiom, \(|S_k| \le 2^{k+1}\). Reaching a state \(s^*\) that identifies \(x\) is a <i>Hitting Time</i> problem in the universal transition graph. Since \(\mathcal{A}_\infty\) is a terminal coalgebra (uniform sampler), the hitting probability is \(P(s_x^*) = 2^{-K(x)}\), giving \(T = 1/P = 2^{K(x)}\).
                     <span class="qed">■</span>
                 </div>
 
@@ -385,8 +385,13 @@
                 </div>
 
                 <div class="env lemma">
-                    <span class="env-title">Lemma 9.2 (Non-Vanishing Metric Reduction)</span>
-                    For a random algorithmic metric graph \(G_x\), the optimal Hamiltonian tour length \(L(\pi^*)\) shrinks from the random expectation by \(\delta = \mathbb{E}[L] - L(\pi^*) \ge \epsilon n\). This separation establishes the presence of a macroscopic functional scale interior to the problem.
+                    <span class="env-title">Lemma 9.2 (Metric Reduction Proof)</span>
+                    For a graph \(G_x\) of \(n\) fragments, the optimal tour length \(L(\pi^*)\) satisfies \(L(\pi^*) \le (1 - \epsilon) \cdot \mathbb{E}[L]\) for \(\epsilon > 0\).
+                </div>
+                <div class="proof">
+                    <span class="proof-label">Proof.</span>
+                    By the Triangle Inequality, \(G_x\) is a metric space. In any discrete metric space with \(n\) nodes, the shortest Hamiltonian path is bounded by the <i>Algorithmic Covering Number</i> \(\mathcal{N}(\bar{K})\). Since fragments are informationally dependent (\(\sum K(s_i) > K(x)\)), the space exhibits macroscopic clustering, extracting \(\delta \ge \epsilon n\) resolution over a random walk.
+                    <span class="qed">■</span>
                 </div>
 
                 <div class="env definition">
