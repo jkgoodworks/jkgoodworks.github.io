@@ -25,9 +25,9 @@
 We establish a formal mathematical equivalence between computational time complexity and
 Kolmogorov complexity. We define a terminal 1-bit transition architecture $\mathcal{A}_\infty$
 (the final coalgebra of transition systems) and prove that the aggregate transition cardinality $T$
-is strictly lower-bounded by the product of the structural redundancy $\delta$ and the 
+is strictly lower-bounded by the structural redundancy $\delta$ and the 
 search-space density $2^{k}$, where $k=K(x)$. We derive the Complexity-Persistence 
-Identity $T \ge \Omega(\delta \cdot 2^{k})$ by proving that algorithmic resolution under 
+Identity $T \ge \Omega((1+\delta) \cdot 2^{k})$ by proving that algorithmic resolution under 
 universal persistence requires a non-vanishing discovery cost per bit. We resolve the P 
 versus NP problem by demonstrating that NP-complete structures require super-polynomial 
 transition volumes to resolve their descriptive redundancy against the permutation space.
@@ -121,9 +121,9 @@ two coupled informational components:
 
 The Complexity-Persistence Identity (Section~\ref{sec:master}) establishes that for inputs 
 where the program $p^*$ must remain persistent in the system state (Lemma~\ref{lem:persistence}), 
-the total transition count $T$ scales with the product $\delta \cdot 2^{|p^{*}|}$. This 
+the total transition count $T$ scales with $(1+\delta) \cdot 2^{|p^{*}|}$. This 
 identity formalizes computational work as the total volume of unit-resolution transitions 
-required to resolve an input's descriptive depth.
+required to resolve an input's descriptive depth, seamlessly unifying both profiles.
 
 \section{Axiomatic Foundations} \label{sec:axioms}
 
@@ -268,24 +268,28 @@ mandates a $2^k$ resolution cost for every unit of output entropy resolved.
 \end{proof}
 
 \begin{theorem}[Complexity-Persistence Identity] \label{thm:master}
-The aggregate transition count $T$ satisfies $T \ge \Omega(\delta \cdot 2^{k})$.
+The aggregate transition count $T$ satisfies $T \ge \Omega((1+\delta) \cdot 2^{k})$.
 \end{theorem}
 \begin{proof}
-Summing the persistent step costs over $\delta$ redundancy bits:
+By Theorem~\ref{thm:lower_bound}, the minimal discovery cost for the optimal program 
+$p^*$ requires bounding a transition path of length $\Omega(2^k)$. By 
+Lemma~\ref{lem:persistence_cost}, each of the $\delta$ structural redundancy bits resolved 
+subsequently incurs a persistent phase-crossing cost of $\Delta t_i \ge \Omega(2^k)$. 
+Summing the baseline discovery cost and the persistent resolution steps yields:
 \begin{equation}
-    T = \sum_{i=1}^{\delta} \Delta t_i \ge \sum_{i=1}^{\delta} C \cdot 2^{k} = \Omega(\delta \cdot 2^k).
+    T \ge \Omega(2^k) + \sum_{i=1}^{\delta} \Delta t_i \ge \Omega(2^k) + \Omega(\delta \cdot 2^k) = \Omega((1+\delta) \cdot 2^k).
 \end{equation}
-This replaces the naive exponential search $2^k$ with a multiplicative search-resolution 
-product, identifying the discrete work required to resolve structure.
+This establishes a unified computational bound encompassing both the initial search profile 
+and the sequential resolution profile.
 \end{proof}
 
 \section{Optimal Efficiency and Universal Scaling Laws} \label{sec:efficiency}
 
 \begin{theorem}[Optimal Efficiency Law] \label{thm:efficiency}
-In $\mathcal{A}_\infty$, the aggregate transition count satisfies $T = \Theta(\delta \cdot 2^{k})$.
+In $\mathcal{A}_\infty$, the aggregate transition count satisfies $T = \Theta((1+\delta) \cdot 2^{k})$.
 \end{theorem}
 \begin{proof}
-The lower bound $T \ge \Omega(\delta \cdot 2^{k})$ is given by Theorem~\ref{thm:master}. Since 
+The lower bound $T \ge \Omega((1+\delta) \cdot 2^{k})$ is given by Theorem~\ref{thm:master}. Since 
 $\mathcal{A}_\infty$ executes the optimal simulation strategy (Levin Search), and the 
 optimal program $p^*$ is uniquely identified in the descriptive volume $2^k$, no computable 
 transition system can resolve $x$ in fewer steps. The upper bound $T = O(\delta \cdot 2^k)$ 
