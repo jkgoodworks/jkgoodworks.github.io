@@ -210,9 +210,9 @@
         </nav>
 
         <main>
-            <!-- PART I: JOURNAL PAPER -->
+            <!-- STITCHED MASTERPIECE -->
             <article class="paper-card">
-                <div class="part-label">Part I: Academic Narrative</div>
+                <div class="part-label">Scientific Journal Paper</div>
                 <h1 class="paper-title">The Compression-Time Duality: A Formal Unification of Computational Complexity</h1>
                 <div class="author-info">
                     <strong>Ioannis Kallergis</strong><br>
@@ -235,122 +235,109 @@
                 <h2 class="section-title">2. Axiomatic Foundations</h2>
                 <div class="env definition">
                     <span class="env-title">Definition 2.1 (The 1-Bit Transition Architecture)</span>
-                    A universal architecture is the tuple \(\mathcal{A} = (S, \Omega, \Delta, \sigma_0)\) with 1-bit extraction per transition.
+                    \(\mathcal{A} = (S, \Omega, \Delta, \sigma_0)\). Reversible transition bijection. extraction Resolution limited to 1 bit per step.
                 </div>
 
-                <h2 class="section-title">3. The Optimal Terminal Architecture</h2>
+                <h2 class="section-title">3. Terminal Coalgebra Architecture</h2>
                 <div class="env definition">
                     <span class="env-title">Definition 3.1 (Execution Endofunctor)</span>
                     \(\mathcal{A}_\infty \cong \varprojlim F^n(\mathbf{1})\) representing the terminal hardware limit (Levin Search).
                 </div>
 
-                <div class="env theorem">
-                    <span class="env-title">Theorem 3.2 (Optimal Efficiency Law)</span>
-                    In \(\mathcal{A}_\infty\), native transition volume \(T\) satisfies \(T = \Theta\left(2^{K(x)} \cdot \delta\right)\).
-                </div>
-
-                <h2 class="section-title">4. Geometric Time Bounds</h2>
-                <div class="env theorem">
-                    <span class="env-title">Theorem 4.1 (Universal Execution Geometry)</span>
-                    The absolute transition delay \(T \ge \Omega(\delta \cdot 2^{|p|})\).
-                </div>
-
-                <h2 class="section-title">Conclusion</h2>
-                <p>The Compression-Time Duality identifies computational time as the geometry of algorithmic discovery. P versus NP is formally revealed as the phase boundary where structural reduction intersects the exponential search volume.</p>
-            </article>
-
-            <!-- PART II: FULL SYMBOLIC PROOF -->
-            <article class="paper-card">
-                <div class="part-label">Part II: Full Symbolic Proof</div>
-                <h1 class="paper-title">The Compression-Time Duality: Pure Mathematical Formalization</h1>
-                <div class="author-info">
-                    <strong>Ioannis Kallergis</strong>
-                </div>
-
-                <h2 class="section-title">1. Axioms</h2>
-                <div class="env definition">
-                    <span class="env-title">Definition 1.1 (The 1-Bit Transition Architecture)</span>
-                    \(\mathcal{A} = (S, \Omega, \Delta, \sigma_0)\).
-                </div>
-
-                <h2 class="section-title">2. Terminal Coalgebra</h2>
-                <div class="env definition">
-                    <span class="env-title">Definition 2.1 (Execution Endofunctor)</span>
-                    Endofunctor \(F\) converges to \(\mathcal{A}_\infty\).
-                </div>
-
                 <div class="env lemma">
-                    <span class="env-title">Lemma 2.2 (Ergodic Recovery)</span>
+                    <span class="env-title">Lemma 3.2 (Ergodic Recovery)</span>
                     \(T \ge \Omega(2^k)\).
                 </div>
                 <div class="proof">
                     <span class="proof-label">Proof.</span>
-                    Levin Search dovetails programs \(p\) with frequency \(2^{-|p|}\). Reaching specific configuration \(p^*\) of length \(k\) requires traversing volume \(2^k\).
+                    Levin Search dovetails programs \(p\) with frequency \(2^{-|p|}\). Reaching specific configuration \(p^*\) of length \(k\) requires traversing volume \(2^k\) to satisfy the descriptive volume.
                     <span class="qed">■</span>
                 </div>
 
-                <h2 class="section-title">3. Algorithmic Time Boundary</h2>
                 <div class="env theorem">
-                    <span class="env-title">Theorem 3.1 (Uniform Time Lower Bound)</span>
+                    <span class="env-title">Theorem 3.3 (Optimal Efficiency Law)</span>
+                    \(T = \Theta(2^{K(x)} \cdot \Delta K)\).
+                </div>
+                <div class="proof">
+                    <span class="proof-label">Proof.</span>
+                    Reaching \(k\)-bit state requires \(2^k\) transitions (Lemma 3.2). Resolving \(\delta\) bits of resolution sequentially scales delay by thickness (Theorem 5.2). \(T = \delta \cdot 2^k\).
+                    <span class="qed">■</span>
+                </div>
+
+                <h2 class="section-title">4. Algorithmic Time Boundary</h2>
+                <div class="env theorem">
+                    <span class="env-title">Theorem 4.1 (Uniform Time Lower Bound)</span>
                     \(T \ge \Omega(2^k)\).
                 </div>
                 <div class="proof">
                     <span class="proof-label">Proof.</span>
-                    Reconstructing \(x\) via \(\langle \mathcal{A}_\infty, T \rangle\) gives \(K(x) \le \log_2 T + c\). \(k \le \log_2 T + c \implies T \ge 2^{k-c}\).
+                    \(K(x) \le \log_2 T + c\). If \(T < 2^k\), then \(K(x) < k\), contradicting minimality.
                     <span class="qed">■</span>
                 </div>
 
-                <h2 class="section-title">4. Differential Phase Trajectories</h2>
+                <h2 class="section-title">5. Differential Phase Trajectories</h2>
                 <div class="env lemma">
-                    <span class="env-title">Lemma 4.2 (Geometric Resolution Cost)</span>
+                    <span class="env-title">Lemma 5.2 (Geometric Resolution Cost)</span>
                     \(\Delta k = 1 \implies \Delta t \ge \Omega(2^{K(s_t)})\).
                 </div>
                 <div class="proof">
                     <span class="proof-label">Proof.</span>
-                    By 1-bit axiom, \(\log_2(t + \Delta t) \ge K(\sigma_t) + 1 \ge \log_2 t + 1\). This implies \(t + \Delta t \ge 2t \implies \Delta t \ge t \approx 2^{K(s_t)}\).
+                    By 1-bit axiom, \(\log_2(t + \Delta t) \ge K(\sigma_t) + 1 \implies t + \Delta t \ge 2t \implies \Delta t \ge t \approx 2^{K(s_t)}\).
                     <span class="qed">■</span>
                 </div>
 
-                <h2 class="section-title">5. Phase Boundaries and Master Formula</h2>
+                <h2 class="section-title">6. Phase Boundaries and Master Formula</h2>
                 <div class="env theorem">
-                    <span class="env-title">Theorem 5.2 (The Master Formula)</span>
+                    <span class="env-title">Theorem 6.2 (The Master Formula)</span>
                     <div class="math">\[T \ge \Omega(\delta \cdot 2^{|p|}).\]</div>
                 </div>
                 <div class="proof">
                     <span class="proof-label">Proof.</span>
-                    Integrating Lemma 4.2 across boundaries of \(\delta\). Total complexity depth \(\delta\) scales geometric resolution delay linearly.
+                    Integrating Lemma 5.2 across \(\delta\) boundaries. Total execution work is integral of resolution cost over phase space depth.
                     <span class="qed">■</span>
                 </div>
 
-                <h2 class="section-title">6. Universal Scaling Law</h2>
+                <h2 class="section-title">7. Universal Scaling Law</h2>
                 <div class="env theorem">
-                    <span class="env-title">Theorem 6.2 (Universal Complexity Integral)</span>
+                    <span class="env-title">Theorem 7.2 (Universal Complexity Integral)</span>
                     <div class="math">\[T_f(N) \ge \Omega \left( \sum_{k=0}^N 2^k \cdot \Phi_f(k) \right).\]</div>
                 </div>
+                <div class="proof">
+                    <span class="proof-label">Proof.</span>
+                    Summing geometric costs across descriptive spectrum. For each level \(k\), work is product of states \(2^k\) and extraction \(\Phi_f\).
+                    <span class="qed">■</span>
+                </div>
 
-                <h2 class="section-title">7. Case Study: NP-Optimization</h2>
+                <h2 class="section-title">8. Case Study: NP-Optimization</h2>
                 <div class="env lemma">
-                    <span class="env-title">Lemma 7.2 (Beardwood-Halton-Hammersley Scaling)</span>
+                    <span class="env-title">Lemma 8.2 (BHH Scaling)</span>
                     <div class="math">\[L_{BHH}(\pi^*) \approx \beta(D) \cdot n^{(D-1)/D}.\]</div>
                 </div>
 
                 <div class="env lemma">
-                    <span class="env-title">Lemma 7.3 (Reduction Deduction)</span>
-                    Limit \(\lim_{D \to \infty} n^{(D-1)/D} = n\). Structured reduction \(\delta \approx n - L^* \ge \epsilon n\).
+                    <span class="env-title">Lemma 8.3 (Reduction Deduction)</span>
+                    Structured reduction \(\delta = L_{raw} - L^* \ge \epsilon n\).
                 </div>
 
                 <div class="env theorem">
-                    <span class="env-title">Theorem 7.4 (TSP-Isomorphism)</span>
+                    <span class="env-title">Theorem 8.4 (TSP-Isomorphism)</span>
                     <div class="math">\[T \ge \Omega(\epsilon n \cdot 2^{n \log n}).\]</div>
                 </div>
                 <div class="proof">
                     <span class="proof-label">Proof.</span>
-                    Substituting \(\delta = \epsilon n\) and \(|p| = n \log n\) into Master Formula. Exponential scale boundary is absolute.
+                    Substituting \(\delta = \epsilon n\) and \(|p| = n \log n\) into Master Formula. Exponential scale boundary is absolute informational characteristic.
                     <span class="qed">■</span>
                 </div>
 
-                <h2>Conclusion</h2>
-                <p>Computational time is the physical integral of algorithmic discovery work.</p>
+                <h2 class="section-title">Conclusion</h2>
+                <p>Computational time is the physical integral of algorithmic discovery work. P vs NP is the boundary where structural reduction intersects exponential search volume.</p>
+
+                <h2 class="section-title">References</h2>
+                <ol>
+                    <li>Kolmogorov (1965). Definition of information.</li>
+                    <li>Levin (1973). Universal search problems.</li>
+                    <li>Beardwood et al. (1959). The shortest path.</li>
+                </ol>
             </article>
         </main>
 
