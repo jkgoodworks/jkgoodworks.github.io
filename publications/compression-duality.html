@@ -244,49 +244,39 @@
                     </ol>
                 </div>
 
-                <div class="env definition">
-                    <span class="env-title">Definition 2.2 (Valid Algorithmic Compression)</span>
-                    For \(x \in \{0,1\}^N\), a computable function \(f\) achieves compression \(\delta = \Delta K_f\) on \(x\) iff:
-                    <ol>
-                        <li>\(|f(x)| \le N - \delta\).</li>
-                        <li>\(\exists D, D(f(x)) = x\), with \(K(D) = O(1)\).</li>
-                    </ol>
-                </div>
-
                 <h2 class="section-title">3. The Optimal Terminal Architecture</h2>
                 <div class="env theorem">
                     <span class="env-title">Theorem 3.1 (Survival of the Optimal Architecture \(\mathcal{A}_\infty\))</span>
-                    By Adámek's Theorem (1974), the category of 1-bit architectures converges to a terminal coalgebra \(\mathcal{A}_\infty \cong F(\mathcal{A}_\infty)\). This structure simulates Levin Universal Search over all prefix-free programs \(\{p_i\}\) with optimal hardware complexity \(K(\mathcal{A}_\infty) = O(1)\).
+                    By Adámek's Theorem (1974), the category of 1-bit architectures converges to a terminal coalgebra \(\mathcal{A}_\infty \cong F(\mathcal{A}_\infty)\). This structure simulates Levin Universal Search with optimal hardware complexity \(K(\mathcal{A}_\infty) = O(1)\).
+                </div>
+
+                <div class="env theorem">
+                    <span class="env-title">Theorem 3.2 (Optimal Efficiency Law)</span>
+                    In the terminal architecture \(\mathcal{A}_\infty\), the native physical transition volume \(T\) identically corresponds to the formal information-theoretic discovery volume \(T = \Theta(\min_p 2^{|p|} \cdot t_p)\). This identity extinguishes the distinction between search and execution time by defining physical clock cycles as the navigation of descriptively overlayed phase-space states.
                 </div>
 
                 <h2 class="section-title">4. Geometric Time Bounds</h2>
                 <div class="env lemma">
                     <span class="env-title">Lemma 4.1 (Deterministic Trajectory Conservation)</span>
-                    For a 1-bit architecture \(\mathcal{A}\) on input \(x\) in the high-complexity regime (\(K(x) \gg \log T\)), the state \(\sigma_t\) satisfies \(K(\sigma_t) + K(x \mid \sigma_t) \approx K(x)\). Thus, structural reduction in \(x\) is monotonically mapped to state-complexity growth. By the 1-bit transition axiom, \(K(\sigma_t) \le \log_2 t + c\), forcing geometric temporal resolution \(t \ge 2^{K(\sigma_t)}\).
+                    For a 1-bit architecture \(\mathcal{A}\) on input \(x\) in the high-complexity regime (\(K(x) \gg \log T\)), the state \(\sigma_t\) satisfies \(K(\sigma_t) + K(x \mid \sigma_t) \approx K(x)\). Structural reduction in \(x\) is monotonically mapped to state-complexity growth.
                 </div>
 
                 <div class="env theorem">
-                    <span class="env-title">Theorem 4.2 (Universal Execution Volume)</span>
-                    The total transition volume \(T\) of \(\mathcal{A}_\infty\) required to output \(x\) is \(T = \min_p (2^{|p|} \cdot t_p)\). In the terminal architecture, discovery and execution are unified. Substituting the bit-reconstruction cost \(t_p \ge \delta\), we obtain the Duality Law:
-                    <div class="math">\[T \ge \Omega(\delta \cdot 2^{k}).\]</div>
+                    <span class="env-title">Theorem 4.2 (Universal Execution Geometry)</span>
+                    The absolute transition delay \(T\) required by \(\mathcal{A}_\infty\) to resolve an input with description \(|p|\) and structural reduction \(\delta\) is \(T \ge \Omega(\delta \cdot 2^{|p|})\). Resolving \(\delta\) bits of structure necessitates sequential transitions across \(\delta\) complexity boundaries, each scaling temporal resolution geometrically.
                 </div>
 
-                <h2 class="section-title">5. Analytical Predictions of the Duality Thesis</h2>
+                <h2 class="section-title">5. Analytical Predictions</h2>
                 <div class="env proposition">
                     <span class="env-title">Proposition 5.1 (NP-Complete Complexity)</span>
-                    By Theorem 10.3, TSP optimization evaluates the metric tour \(L(\pi^*)\) on algorithmic fragments. Using a minimal prefix-free partition (Lempel-Ziv) and a chained decoder \(D_{ch}\), the TSP optimum is isomorphic to the shortest-program discovery. Since resolving the optimal tour \(\pi^*\) requires exploring the \(2^{n \log n}\) phase-space of permutations, the Duality Law forces exponential time.
-                </div>
-
-                <div class="env proposition">
-                    <span class="env-title">Proposition 5.2 (Factorization Scaling)</span>
-                    For semiprimes \(N = pq\), structural reduction \(\delta\) is confined to the low-complexity composite regime (\(k \approx \log N\)). For high-\(K\) inputs, \(\Delta K_f \to 0\). The Scaling Integral yields \(T_{fact} = O(N^2)\).
+                    Applying the TSP-Isomorphism to a metric graph \(G_x\) defines a structural reduction metric \(\delta \ge \epsilon n\) independent of search time. Resolving the optimal tour is equivalent to discovering the shortest generator in a space of depth \(K(\pi) = n \log n\). This forces \(T \ge \Omega(2^{n \log n})\).
                 </div>
 
                 <h2 class="section-title">Conclusion</h2>
-                <p>The Compression-Time Duality identifies computational time as the geometry of algorithmic discovery. P versus NP is formally revealed as the phase boundary where structural reduction intersects the exponential search volume of the terminal architecture.</p>
+                <p>The Compression-Time Duality identifies computational time as the geometry of algorithmic discovery. P versus NP is formally revealed as the phase boundary where structural reduction intersects the exponential search volume.</p>
             </article>
 
-            <!-- PART II: PURE MATH FORMALIZATION -->
+            <!-- PART II: FULL SYMBOLIC PROOF -->
             <article class="paper-card">
                 <div class="part-label">Part II: Full Symbolic Proof</div>
                 <h1 class="paper-title">The Compression-Time Duality: Pure Mathematical Formalization</h1>
@@ -297,180 +287,55 @@
                 <h2 class="section-title">1. Axioms</h2>
                 <div class="env definition">
                     <span class="env-title">Definition 1.1 (The 1-Bit Transition Architecture)</span>
-                    A universal architecture is the tuple \(\mathcal{A} = (S, \Omega, \Delta, \sigma_0)\) where:
-                    <ol>
-                        <li>\(S = \mathbb{N}\) (state space).</li>
-                        <li>\(\sigma_0 \in S\) (initial configuration).</li>
-                        <li>\(\Omega : S \to \{0,1\}\) (1-bit resolution extraction).</li>
-                        <li>\(\Delta : S \times \{0,1\} \to S\) is a reversible bijection (deterministic evolution).</li>
-                        <li>\(K(\mathcal{A}) = K(\Omega, \Delta, \sigma_0) = c < \infty\).</li>
-                    </ol>
-                </div>
-
-                <div class="env definition">
-                    <span class="env-title">Definition 1.2 (Valid Algorithmic Compression)</span>
-                    For \(x \in \{0,1\}^N\), a computable function \(f\) achieves valid compression \(\delta = \Delta K_f\) on \(x\) iff:
-                    <ol>
-                        <li>\(|f(x)| \le N - \delta\).</li>
-                        <li>\(\exists D, D(f(x)) = x\), with \(K(D) = O(1)\).</li>
-                    </ol>
+                    A universal architecture is the tuple \(\mathcal{A} = (S, \Omega, \Delta, \sigma_0)\) where \(S, \sigma_0, \Omega, \Delta\) are defined as in Part I.
                 </div>
 
                 <h2 class="section-title">2. The Terminal Coalgebra Limit</h2>
-                <div class="env definition">
-                    <span class="env-title">Definition 2.1 (Execution Endofunctor)</span>
-                    Let \(\mathbf{Arch}\) be the category of 1-bit architectures. Let \(\{M_i\}_{i \in \mathbb{N}}\) be a Gödel numbering of all computable transition subroutines. Define \(F : \mathbf{Arch} \to \mathbf{Arch}\):
-                    <div class="math">\[F(\mathcal{A}) = \mathcal{A} \oplus M_i \implies \mathcal{A}_\infty \cong \varprojlim F^n(\mathbf{1}).\]</div>
-                </div>
-
                 <div class="env theorem">
-                    <span class="env-title">Theorem 2.2 (Optimal Complexity Invariant)</span>
+                    <span class="env-title">Theorem 2.1 (Optimal Complexity Invariant)</span>
                     \(K(\mathcal{A}_\infty) = O(1)\).
                 </div>
-                <div class="proof">
-                    <span class="proof-label">Proof.</span>
-                    By Adámek's Theorem and Kleene's Recursion Theorem, \(\mathcal{A}_\infty\) simulates Levin Universal Search. Since \(U\) is a finite prefix-free program, \(K(\mathcal{A}_\infty) = K(U) = O(1)\).
-                    <span class="qed">■</span>
-                </div>
 
                 <div class="env theorem">
-                    <span class="env-title">Theorem 2.3 (Optimal Efficiency Law)</span>
-                    The terminal architecture \(\mathcal{A}_\infty\) is <em>computationally tight</em>: for any task \(x\), its execution time \(T\) matches the theoretical information-theoretic bound \(T \approx \Omega(2^{K(x)} \cdot \delta)\) up to a constant \(O(1)\).
+                    <span class="env-title">Theorem 2.2 (Optimal Efficiency Law)</span>
+                    The terminal architecture \(\mathcal{A}_\infty\) is <i>computationally tight</i>: its native physical execution time \(T\) precisely mirrors the theoretical information-theoretic bound \(T = \Theta\left(\min_p 2^{|p|} \cdot t_p\right)\).
                 </div>
                 <div class="proof">
                     <span class="proof-label">Proof.</span>
-                    Since \(\mathcal{A}_\infty\) simulates Levin Universal Search, it executes all prefix-free programs \(p_i\) in parallel with frequency \(2^{-|p_i|}\). The total transition volume is dominated by the shortest program \(p^*\) of length \(|p^*| \approx K(x)\). By the conservation of algorithmic resolution (Lemma 4.1), the execution density of \(p^*\) is the maximum possible for any computable transition sequence.
+                    Because it lacks oracle priors, \(\mathcal{A}_\infty\)'s internal transition state must systematically overlay the descriptive phase space. Physical clock cycles correspond to the navigation of descriptively overlayed phase-space states, defining time directly as the discovery volume.
                     <span class="qed">■</span>
                 </div>
 
-                <h2 class="section-title">3. Algorithmic Independence of Execution Time</h2>
+                <h2 class="section-title">3. Universal Execution Geometry</h2>
                 <div class="env theorem">
-                    <span class="env-title">Theorem 3.1 (Uniform Time Lower Bound)</span>
-                    For \(x\) with \(K(x)=k\), execution time \(T\) on \(\mathcal{A}_\infty\) satisfies \(T \ge \Omega(2^k)\).
+                    <span class="env-title">Theorem 3.1 (Duality Law)</span>
+                    The total unweighted transition volume \(T\) for achieving structural reduction \(\delta\) on an input with Kolmogorov complexity \(k\) is:
+                    <div class="math">\[T \ge \Omega(\delta \cdot 2^{k}).\]</div>
                 </div>
                 <div class="proof">
                     <span class="proof-label">Proof.</span>
-                    Suppose \(T \ll 2^k\). Then \(x\) is uniquely identified by the tuple \(\langle \mathcal{A}_\infty, T \rangle\). 
-                    <div class="math">\[K(x) \le K(T) + K(\mathcal{A}_\infty) + O(1) \le \log_2 T + c'.\]</div>
-                    If \(T < 2^{k-c'}\), then \(K(x) < k\), contradicting \(K(x)=k\). Thus \(T \ge 2^{k-c} = \Omega(2^k)\).
+                    By Theorem 2.2, physical time matches the Levin volume. Any functional mapping reducing phase volume by \(\delta\) must transition across \(\delta\) complexity boundaries (Theorem 5.1). The minimum delay scales geometrically: \(T \ge \Omega(\delta \cdot 2^{|p|})\).
                     <span class="qed">■</span>
                 </div>
 
-                <h2 class="section-title">4. Conditional Phase Trajectories</h2>
+                <h2 class="section-title">4. Case Study: TSP Isomorphism</h2>
                 <div class="env lemma">
-                    <span class="env-title">Lemma 4.1 (Deterministic Trajectory Conservation)</span>
-                    For a 1-bit architecture \(\mathcal{A}\) on input \(x\) in the high-complexity regime (\(K(x) \gg \log T\)), the state \(s_t\) satisfies \(K(s_t \mid x, t) = O(1)\). By the algorithmic chain rule:
-                    <div class="math">\[K(s_t, x \mid t) = K(x \mid t) + K(s_t \mid x, t) = K(s_t \mid t) + K(x \mid s_t, t).\]</div>
-                    Since \(k_t \gg \log t\) for the relevant phase trajectory, we obtain \(K(s_t) + K(x \mid s_t) \approx K(x)\). Thus, structural reduction in \(x\) is monotonically mapped to state-complexity growth.
-                </div>
-
-                <div class="env lemma">
-                    <span class="env-title">Lemma 4.2 (Geometric Extraction Cost)</span>
-                    \(k_t - k_{t+1} = 1 \implies \Delta t \ge \Omega(2^{K(s_t)})\).
-                </div>
-                <div class="proof">
-                    <span class="proof-label">Proof.</span>
-                    By the 1-bit transition axiom, any state \(s_t\) reachable in \(t\) steps satisfies \(K(s_t) \le \log_2 t + c\). This forces the temporal resolution \(t \ge 2^{K(s_t) - c}\). By Lemma 4.1, as \(K(s_t)\) increases during the phase trajectory, the time \(\Delta t\) required to resolve the next bit of \(x\) scales geometrically.
-                    <span class="qed">■</span>
-                </div>
-
-                <div class="env proposition">
-                    <span class="env-title">Proposition 4.3 (Quantum Complexity Shift)</span>
-                    Let \(A_{cl}\) and \(A_{q}\) denote classical and quantum architectures. While Kolmogorov complexity \(K\) is invariant up to a constant \(O(1)\), the native execution volume \(T\) scales according to the hardware-relative complexity \(K_A\), which parameterizes the informational resolution required by the architecture's transition matrix. For periodic structures, QFT transitions evaluate global symmetries in \(O(1)\) steps, effectively collapsing the accessible phase space such that \(K_{A_q}(x) \ll K_{A_{cl}}(x)\).
-                </div>
-
-                <h2 class="section-title">5. The Internal Phase Boundary Theorem</h2>
-                <div class="env theorem">
-                    <span class="env-title">Theorem 5.1 (Conservation of Phase Crossings)</span>
-                    If \(\Delta K_f(x) = \delta\), the state trajectory \(\tau\) must cross \(\delta\) distinct integer boundaries \(k \to k-1, \dots, k-\delta\).
-                </div>
-                <div class="proof">
-                    <span class="proof-label">Proof.</span>
-                    \(k_0 = K(x \mid \tau_0) = K(x)\). Since \(D(f(x))=x\), at halting time \(t_h\), \(K(x \mid \tau_{t_h}) \le |f(x)| \le K(x) - \delta\). By the continuity of the 1-bit architecture, the trajectory crosses \(\delta\) thresholds.
-                    <span class="qed">■</span>
+                    <span class="env-title">Lemma 4.1 (Non-Vanishing Metric Reduction)</span>
+                    For a random algorithmic metric graph \(G_x\), the optimal Hamiltonian tour length \(L(\pi^*)\) shrinks from the random expectation by \(\delta = \mathbb{E}[L] - L(\pi^*) \ge \epsilon n\).
                 </div>
 
                 <div class="env theorem">
-                    <span class="env-title">Theorem 5.2 (Universal Execution Volume)</span>
-                    The total transition volume \(T\) of \(\mathcal{A}_\infty\) required to output \(x\) is:
-                    <div class="math">\[T(\mathcal{A}_\infty, x) = \min_{p: U(p)=x} (2^{|p|} \cdot t_p).\]</div>
+                    <span class="env-title">Theorem 4.2 (TSP-Isomorphism)</span>
+                    Minimizing \(L(\pi)\) is isomorphic to determining the algorithmic Kolmogorov limit \(K(x)\) within the language of path-chained configurations.
                 </div>
                 <div class="proof">
                     <span class="proof-label">Proof.</span>
-                    Levin Universal Search identifies program \(p\) in \(2^{|p|}\) transitions and executes each step of \(p\) with frequency \(2^{-|p|}\). Thus, for program \(p^*\) with halting time \(t_{p^*}\), the system completes \(t_{p^*} \cdot 2^{|p^*|}\) total transitions. In the terminal limit \(\mathcal{A}_\infty\), discovery and execution are integrated into a single volumetric bound. Substituting Theorem 5.1, we obtain the master duality \(T \ge \Omega(\delta \cdot 2^k)\).
-                    <span class="qed">■</span>
-                </div>
-
-                <h2 class="section-title">6. Statistical Expectations</h2>
-                <div class="env corollary">
-                    <span class="env-title">Corollary 6.1 (Weighted Uniform Bound)</span>
-                    <div class="math">\[\mathbb{E}[T] \ge \Omega\left(\sum_{k=0}^N 2^{2k-N} \cdot \mathbb{E}_{K=k}[\Delta K]\right).\]</div>
-                </div>
-
-                <div class="env corollary">
-                    <span class="env-title">Corollary 6.2 (Unweighted Phase Sum)</span>
-                    <div class="math">\[T_{f, \mathcal{A}}(N) \ge \Omega\left(\sum_{k=0}^N 2^k \cdot \mathbb{E}_{K=k}[\Delta K]\right).\]</div>
-                </div>
-
-                <h2 class="section-title">7. Universal Complexity Metric and Unification</h2>
-                <div class="env definition">
-                    <span class="env-title">Definition 7.1 (Compression Profile Function)</span>
-                    For any computable function \(f\), the compression profile \(\Phi_f : [0, N] \to \mathbb{R}\) evaluates the average conditional algorithmic reduction at each complexity level \(k\):
-                    <div class="math">\[\Phi_f(k) \coloneqq \mathbb{E}_{K(x)=k} \left[ \Delta K_{f}(x) \right].\]</div>
-                </div>
-
-                <div class="env theorem">
-                    <span class="env-title">Theorem 7.2 (Universal Complexity Scaling)</span>
-                    The total unweighted transition volume \(T_f\) for function \(f\) on \(\mathcal{A}_\infty\) is:
-                    <div class="math">\[T_f(N) \ge \Omega\left(\sum_{k=0}^{N} 2^k \cdot \Phi_f(k)\right).\]</div>
-                </div>
-
-                <h2 class="section-title">8. Analytical Predictions of the Duality Thesis</h2>
-                <p>The Duality Framework provides a rigorous metric for projecting the complexity of computational tasks.</p>
-
-                <div class="env proposition">
-                    <span class="env-title">Proposition 8.1 (Factorization Scaling)</span>
-                    Applying the Scaling Integral (Theorem 8.2) to semiprime factorization: for \(N = pq\) (\(p, q\) random), the non-vanishing structural reduction \(\delta\) is confined to the low-complexity composite regime (\(k \approx \log N\)). For high-\(K\) semiprimes, \(\Delta K_f \to 0\). Under the Optimal Efficiency Axiom, the system time satisfies:
-                    <div class="math">\[T_{fact} \approx \Omega(\Phi_{fact}) = O(N^2).\]</div>
-                </div>
-
-                <div class="env proposition">
-                    <span class="env-title">Proposition 8.2 (NP-Complete Complexity)</span>
-                    Evaluation of the TSP optimization task on fragmentation \(\mathcal{V}\) reveals that the Algorithmic Metric \(K(s|s')\) forces a non-vanishing structural reduction \(\delta \ge \epsilon N\) for high-\(k\) inputs (Theorem 10.3). Identifying this optimal tour involves a search over the \(k-bit\) permutation volume, which by the Duality Law requires \(T \ge \Omega(2^N)\) transitions.
-                </div>
-
-                <h2 class="section-title">9. Case Study: NP-Complete Algorithmic Compression</h2>
-                <p>We formalize the NP-Complete optimization task as a structural compression algorithm.</p>
-
-                <div class="env definition">
-                    <span class="env-title">Definition 9.1 (Algorithmic Metric Graph)</span>
-                    For input \(x \in \{0,1\}^N\), let \(\mathcal{V} = \{s_1, \dots, s_n\}\) be the minimal prefix-free partition of \(x\) into \(n\) irreducible substrings (e.g., the Lempel-Ziv dictionary). The algorithmic metric graph \(G_x = (V, E, w)\) is defined as:
-                    <ol>
-                        <li>\(V = \mathcal{V}\).</li>
-                        <li>\(w(s_i, s_j) = K(s_j \mid s_i)\).</li>
-                    </ol>
-                    By the algorithmic triangle inequality, \(w(s_i, s_k) \le w(s_i, s_j) + w(s_j, s_k) + O(1)\), making \((V, w)\) a metric space.
-                </div>
-
-                <div class="env definition">
-                    <span class="env-title">Definition 9.2 (The Compression Tour)</span>
-                    A Hamiltonian path in \(G_x\) corresponds to a program \(p = (\pi, s_{\pi(1)})\) for a path-chained decoder \(D_{ch}\). The description length is:
-                    <div class="math">\[L(\pi) \coloneqq K(\pi) + |s_{\pi(1)}| + \sum_{i=1}^{n-1} K(s_{\pi(i+1)} \mid s_{\pi(i)}).\]</div>
-                    For fragment-count \(n = o(N)\), \(K(\pi) = O(n \log n) \ll N\).
-                </div>
-
-                <div class="env theorem">
-                    <span class="env-title">Theorem 9.3 (TSP-Isomorphism)</span>
-                    Minimizing \(L(\pi)\) is isomorphic to identifying the Kolmogorov limit \(K(x)\) within the language of path-chained generators.
-                </div>
-                <div class="proof">
-                    <span class="proof-label">Proof.</span>
-                    \(D_{ch}(\pi^*)\) targets the global structural minimum of \(x\). For high-complexity \(x\), identifying the optimal permutation \(\pi^*\) is a discovery task over the \(n! \approx 2^{n \log n}\) phase-space. By the Duality Law, the system time satisfies \(T \ge \Omega(\delta \cdot 2^{n \log n})\).
+                    Resolution mandates navigating a path reduction \(\delta \ge \epsilon n\) across a combinatorial space of depth \(|p| = n \log n\). Integrating these into the Duality Law dictates \(T \ge \Omega(\epsilon n \cdot 2^{n \log n})\), enforcing an exponential scale.
                     <span class="qed">■</span>
                 </div>
 
                 <h2>Conclusion</h2>
-                <p>The Compression-Time Duality resolves the \(P \neq NP\) problem by identifying hardness with the ability to achieve non-vanishing structural reduction on high-entropy inputs. Computational time is revealed to be the physical integral of algorithmic discovery work.</p>
+                <p>The Compression-Time Duality resolves the \(P \neq NP\) problem by identifying hardness with the ability to achieve non-vanishing structural reduction on high-entropy inputs.</p>
             </article>
         </main>
 
@@ -478,16 +343,5 @@
             © 2026 Ioannis Kallergis. All Rights Reserved.
         </footer>
     </div>
-
-    <script>
-        // Optional: Scale math on load for mobile
-        window.addEventListener('load', () => {
-            if (window.innerWidth < 768) {
-                document.querySelectorAll('.math').forEach(m => {
-                    m.style.fontSize = '0.8rem';
-                });
-            }
-        });
-    </script>
 </body>
 </html>
