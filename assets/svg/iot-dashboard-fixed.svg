@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="300" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
+  
+  <!-- Dashboard frame -->
+  <rect x="20" y="30" width="360" height="240" rx="8" fill="white" stroke="#cbd5e1" stroke-width="2"/>
+  
+  <!-- Header -->
+  <rect x="20" y="30" width="360" height="35" rx="8" fill="#f97316"/>
+  <rect x="20" y="55" width="360" height="10" fill="#f97316"/>
+  <text x="35" y="50" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">📊 Grafana - Environmental Data</text>
+  
+  <!-- Temperature Chart -->
+  <rect x="35" y="80" width="160" height="70" rx="4" fill="#fef3c7" stroke="#f59e0b" stroke-width="1"/>
+  <text x="115" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#92400e">Temperature (°C)</text>
+  <polyline points="50,130 70,125 90,120 110,128 130,122 150,125 170,120" stroke="#f59e0b" stroke-width="2" fill="none"/>
+  <text x="115" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#92400e">23.4°C</text>
+  
+  <!-- Humidity Chart -->
+  <rect x="205" y="80" width="160" height="70" rx="4" fill="#dbeafe" stroke="#3b82f6" stroke-width="1"/>
+  <text x="285" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#1e40af">Humidity (%)</text>
+  <polyline points="220,130 240,125 260,120 280,128 300,122 320,125 340,120" stroke="#3b82f6" stroke-width="2" fill="none"/>
+  <text x="285" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#1e40af">67.8%</text>
+  
+  <!-- CAQI Air Quality -->
+  <rect x="35" y="160" width="105" height="50" rx="4" fill="#dcfce7" stroke="#16a34a" stroke-width="1"/>
+  <text x="87" y="175" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#15803d">CAQI (Air Quality)</text>
+  <text x="87" y="190" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#16a34a">2</text>
+  <text x="87" y="205" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#15803d">Good</text>
+  
+  <!-- TVOC -->
+  <rect x="147" y="160" width="105" height="50" rx="4" fill="#f3e8ff" stroke="#8b5cf6" stroke-width="1"/>
+  <text x="200" y="175" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#7c3aed">TVOC (ppb)</text>
+  <text x="200" y="190" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#7c3aed">142</text>
+  <text x="200" y="205" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#7c3aed">Normal</text>
+  
+  <!-- eCO2 -->
+  <rect x="260" y="160" width="105" height="50" rx="4" fill="#fef2f2" stroke="#ef4444" stroke-width="1"/>
+  <text x="312" y="175" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#dc2626">eCO2 (ppm)</text>
+  <text x="312" y="190" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#dc2626">456</text>
+  <text x="312" y="205" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#dc2626">Fair</text>
+  
+  <!-- Active devices indicator -->
+  <rect x="35" y="220" width="160" height="25" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1"/>
+  <text x="115" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#075985">🔌 ESP32 Nodes Active: 3</text>
+  
+  <!-- Data source -->
+  <rect x="205" y="220" width="160" height="25" rx="4" fill="#fff7ed" stroke="#ea580c" stroke-width="1"/>
+  <text x="285" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#9a3412">📡 InfluxDB + Raspberry Pi 2</text>
+  
+  <!-- Title -->
+  <text x="200" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1e293b">Team 19 - IoT Dashboard</text>
+  
+  <!-- Footer -->
+  <text x="200" y="285" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#64748b">Real-time environmental monitoring via MQTT & InfluxDB</text>
+</svg>

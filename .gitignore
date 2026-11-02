@@ -1,0 +1,10 @@
+# OS junk
+.DS_Store
+Thumbs.db
+*.swp
+
+# Logs
+*.log
+
+# Dependency directories (just in case)
+node_modules/

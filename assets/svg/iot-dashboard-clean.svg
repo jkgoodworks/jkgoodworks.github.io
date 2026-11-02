@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="300" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  
+  <!-- Dashboard container -->
+  <rect x="20" y="30" width="360" height="240" rx="8" fill="white" stroke="#cbd5e1" stroke-width="2"/>
+  
+  <!-- Header bar -->
+  <rect x="20" y="30" width="360" height="40" rx="8" fill="#1e293b"/>
+  <rect x="20" y="60" width="360" height="10" fill="#1e293b"/>
+  <text x="35" y="55" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">Grafana Dashboard - Environmental Monitoring</text>
+  
+  <!-- Temperature widget -->
+  <rect x="35" y="85" width="160" height="80" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="1"/>
+  <text x="115" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#92400e">Temperature (C)</text>
+  <polyline points="50,135 70,130 90,125 110,132 130,128 150,130" stroke="#f59e0b" stroke-width="3" fill="none"/>
+  <text x="115" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#92400e">23.4</text>
+  
+  <!-- Humidity widget -->
+  <rect x="205" y="85" width="160" height="80" rx="6" fill="#dbeafe" stroke="#3b82f6" stroke-width="1"/>
+  <text x="285" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#1e40af">Humidity (%)</text>
+  <polyline points="220,135 240,130 260,125 280,132 300,128 320,130" stroke="#3b82f6" stroke-width="3" fill="none"/>
+  <text x="285" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#1e40af">67.8</text>
+  
+  <!-- Air Quality widget -->
+  <rect x="35" y="175" width="105" height="60" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1"/>
+  <text x="87" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#15803d">Air Quality Index</text>
+  <text x="87" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#16a34a">Good</text>
+  <text x="87" y="230" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#15803d">CAQI: 2</text>
+  
+  <!-- TVOC widget -->
+  <rect x="147" y="175" width="105" height="60" rx="6" fill="#f3e8ff" stroke="#8b5cf6" stroke-width="1"/>
+  <text x="200" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#7c3aed">TVOC (ppb)</text>
+  <text x="200" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#7c3aed">142</text>
+  <text x="200" y="230" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#7c3aed">Normal Range</text>
+  
+  <!-- CO2 widget -->
+  <rect x="260" y="175" width="105" height="60" rx="6" fill="#fef2f2" stroke="#ef4444" stroke-width="1"/>
+  <text x="312" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#dc2626">eCO2 (ppm)</text>
+  <text x="312" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#dc2626">456</text>
+  <text x="312" y="230" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#dc2626">Fair Quality</text>
+  
+  <!-- Status bar -->
+  <rect x="35" y="245" width="330" height="20" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1"/>
+  <text x="200" y="258" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#075985">ESP32-C3 Nodes: 3 Active | Data Source: InfluxDB + Raspberry Pi</text>
+  
+  <!-- Title -->
+  <text x="200" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#475569">Team 19 IoT Environmental Dashboard</text>
+</svg>
