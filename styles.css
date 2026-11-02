@@ -1435,3 +1435,21 @@ body {
     overflow: visible;
     position: relative;
 }
+/* About Me */
+.about-text {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 8px 0 24px;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.about-text p {
+    margin: 0 0 1.2em;
+}
+
+.about-declaration {
+    font-weight: 600;
+    border-left: 3px solid currentColor;
+    padding-left: 16px;
+}
